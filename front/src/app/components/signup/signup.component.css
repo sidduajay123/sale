@@ -1,0 +1,16 @@
+.log{
+    background-color:#d7e0e8 !important;
+    height: 100%;
+    border-radius: 7px;
+    border: #d7d7d7 01px solid;
+} 
+
+.container-fluid{
+    background-image: url(/assets/images/Quickway_login.jpg);
+}
+
+.login a{
+    margin-top: -38px;
+}
+
+
