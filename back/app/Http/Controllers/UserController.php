@@ -25,11 +25,13 @@ class UserController extends Controller
 
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
+            //return $user;
             $success['token'] =  $user->createToken('MyApp')->accessToken;
+            $success['user'] = $user;
             return response()->json(['success' => $success], 200);
         }
         else{
-            return response()->json(['error'=>'Unauthorised'], 401);
+            return response()->json(['error'=>'Email and Password did not match'], 401);
         }
     }
 
@@ -45,19 +47,39 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);            
         }
+        
+        $user = User::where('email',$request->email)->get();
+        //return $user;
 
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
-        $success['name'] =  $user->name;
-        return response()->json(['success'=>$success], 200);
+        if ($user->isEmpty()) 
+        {
+            $input = $request->all();
+            $input['password'] = bcrypt($input['password']);
+            $user = User::create($input);
+            return $this->userLogin($request);
+            // $success['token'] =  $user->createToken('MyApp')->accessToken;
+            // $success['name'] =  $user->name;
+            // return response()->json(['success'=>$success], 200);
+        }else 
+        {
+            return response()->json(['error'=>'user already exists'],401);
+        }
+
+        
     }
 
 
     public function userDetails()
     {
-        $users = User::get();
+        $users = Auth::user();
         return response()->json(['success' => $users], 200);
+    }
+
+    public function logout()
+    {
+        $user = Auth::user()->token();
+        $user->revoke();
+        $user->delete();
+        return response()->json(['success' => 'Log out successfully'], 200);
     }
 }
