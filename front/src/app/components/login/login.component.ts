@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from 'src/app/Services/jarwis.service';
 import { TokenService } from 'src/app/Services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   };
   constructor(
     private Jarwis:JarwisService,
-    private Token:TokenService
+    private Token:TokenService,
+    private Router: Router
     ) { }
 
   ngOnInit() {   
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
 
   handleResponse(data){
     this.Token.handle(data.success.token);
+    this.Router.navigateByUrl('/dashboard');
   }
 
   handleError(error){

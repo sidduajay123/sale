@@ -17,4 +17,8 @@ export class JarwisService {
   login(data){
     return this.http.post(`${this.baseurl}/userLogin`,data)
   }
+
+  user(){
+    return this.http.get(`${this.baseurl}/userDetails`)
+  }
 }
