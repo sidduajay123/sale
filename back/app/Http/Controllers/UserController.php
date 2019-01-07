@@ -75,6 +75,11 @@ class UserController extends Controller
         return response()->json(['success' => $users], 200);
     }
 
+    public function checkLogin()
+    {
+        return response()->json(['success' => 'true'], 200);
+    }
+
     public function logout()
     {
         $user = Auth::user()->token();

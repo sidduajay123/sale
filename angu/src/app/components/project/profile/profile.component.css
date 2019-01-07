@@ -1,0 +1,3 @@
+.gb{position: relative}
+.gb1{position: absolute; left: 495px; top: 100px; background: #ccc; border-radius: 100px; padding: 07px; border: 01px #000 dashed}
+.file-upload{ position: absolute; left: 500px; z-index: 55; top: 105px; opacity: 0;}

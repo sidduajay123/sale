@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.ng-touched.ng-invalid:not(form){
+    border: 1px solid red;
+}
+
+.ng-valid:not(form){
+    border: 1px solid green;
+}
+
+.content-wrapper{width: 98% !important; float: right !important; right: -118px !important; position: relative}
