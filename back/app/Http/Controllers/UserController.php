@@ -72,12 +72,29 @@ class UserController extends Controller
     public function userDetails()
     {
         $users = Auth::user();
+        // $image = storage_path(). '/' .$users->image;
+        // return url('/');
         return response()->json(['success' => $users], 200);
     }
 
     public function checkLogin()
     {
         return response()->json(['success' => 'true'], 200);
+    }
+
+    public function updateProfile(Request $request)
+    {
+       // return $request;
+        $users = Auth::user();
+        
+        $image = str_replace('data:image/jpeg;base64,','',$request->image);
+        $image = str_replace(' ','+',$image);
+        $get_imageName = str_random(10).'.'.'jpg';
+        \File::put(storage_path(). '/image/' . $get_imageName, base64_decode($image));
+        // return $get_imageName;
+        $profile_update = User::where('_id', $users->_id)
+                    ->update(['image' => $get_imageName]);
+        return response()->json(['success' => $profile_update]);
     }
 
     public function logout()

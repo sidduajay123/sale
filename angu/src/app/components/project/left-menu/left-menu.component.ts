@@ -9,6 +9,7 @@ import { JarwisService } from 'src/app/Service/jarwis.service';
 export class LeftMenuComponent implements OnInit {
 
   public data = null;
+  public image = null;
   constructor(
     private Jarwis: JarwisService,
   ) { }
@@ -17,6 +18,7 @@ export class LeftMenuComponent implements OnInit {
     this.Jarwis.user().subscribe(
       data => this.response(data)
     );
+    this.image = this.Jarwis.baseurl;
   }
 
   response(data){

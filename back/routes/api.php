@@ -23,7 +23,8 @@ Route::post('userRegister', 'UserController@userRegister');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('userDetails', 'UserController@userDetails');
     Route::get('checkLogin', 'UserController@checkLogin');
-	Route::get('logout', 'UserController@logout');
+    Route::get('logout', 'UserController@logout');
+    Route::post('profile', 'UserController@updateProfile');
     
 });
 
