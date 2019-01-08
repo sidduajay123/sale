@@ -25,7 +25,6 @@ class UserController extends Controller
 
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
-            //return $user;
             $success['token'] =  $user->createToken('MyApp')->accessToken;
             $success['user'] = $user;
             return response()->json(['success' => $success], 200);
@@ -49,7 +48,6 @@ class UserController extends Controller
         }
         
         $user = User::where('email',$request->email)->get();
-        //return $user;
 
         if ($user->isEmpty()) 
         {
@@ -57,9 +55,6 @@ class UserController extends Controller
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
             return $this->userLogin($request);
-            // $success['token'] =  $user->createToken('MyApp')->accessToken;
-            // $success['name'] =  $user->name;
-            // return response()->json(['success'=>$success], 200);
         }else 
         {
             return response()->json(['error'=>'user already exists'],401);
@@ -72,8 +67,6 @@ class UserController extends Controller
     public function userDetails()
     {
         $users = Auth::user();
-        // $image = storage_path(). '/' .$users->image;
-        // return url('/');
         return response()->json(['success' => $users], 200);
     }
 
@@ -84,14 +77,13 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-       // return $request;
         $users = Auth::user();
         
         $image = str_replace('data:image/jpeg;base64,','',$request->image);
         $image = str_replace(' ','+',$image);
         $get_imageName = str_random(10).'.'.'jpg';
         \File::put(storage_path(). '/image/' . $get_imageName, base64_decode($image));
-        // return $get_imageName;
+        // store in database
         $profile_update = User::where('_id', $users->_id)
                     ->update(['image' => $get_imageName]);
         return response()->json(['success' => $profile_update]);
