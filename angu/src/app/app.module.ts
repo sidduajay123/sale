@@ -13,8 +13,9 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { JarwisService } from './Service/jarwis.service';
 import { TokenInterceptorService } from './Service/token-interceptor.service';
-import { FooterComponent } from './components/project/footer/footer.component';
 import { LeftMenuComponent } from './components/project/left-menu/left-menu.component';
+import { FooterComponent } from './components/project/footer/footer.component';
+
 
 @NgModule({
   declarations: [
