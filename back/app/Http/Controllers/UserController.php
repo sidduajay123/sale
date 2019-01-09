@@ -84,9 +84,18 @@ class UserController extends Controller
         $get_imageName = str_random(10).'.'.'jpg';
         \File::put(storage_path(). '/image/' . $get_imageName, base64_decode($image));
         // store in database
-        $profile_update = User::where('_id', $users->_id)
+        if(!empty($request->name))
+        {
+            $profile_update = User::where('_id', $users->_id)
+                    ->update(['name' => $request->name],['image' => $get_imageName]);
+            return response()->json(['success' => $profile_update]);
+        }else
+        {
+            $profile_update = User::where('_id', $users->_id)
                     ->update(['image' => $get_imageName]);
-        return response()->json(['success' => $profile_update]);
+            return response()->json(['success' => $profile_update]);
+        }
+        
     }
 
     public function logout()
