@@ -67,6 +67,7 @@ class UserController extends Controller
     public function userDetails()
     {
         $users = Auth::user();
+        $users['imgUrl'] = url('/storage/image').'/'.$users->image;
         return response()->json(['success' => $users], 200);
     }
 
@@ -78,22 +79,61 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $users = Auth::user();
+
+        if(empty($request->image) && empty($request->name)) 
+        {
+            return response()->json(['success' => 'fail']);
+        }
+
+        if(!empty($request->image)) 
+        {
+            $image = str_replace('data:image/jpeg;base64,','',$request->image);
+            $image = str_replace(' ','+',$image);
+            $get_imageName = str_random(10).'.'.'jpg';
+            \File::put(storage_path(). '/image/' . $get_imageName, base64_decode($image));
+        }
         
-        $image = str_replace('data:image/jpeg;base64,','',$request->image);
-        $image = str_replace(' ','+',$image);
-        $get_imageName = str_random(10).'.'.'jpg';
-        \File::put(storage_path(). '/image/' . $get_imageName, base64_decode($image));
+        
         // store in database
-        if(!empty($request->name))
+        if(!empty($request->name) && !empty($request->image))
         {
             $profile_update = User::where('_id', $users->_id)
                     ->update(['name' => $request->name],['image' => $get_imageName]);
-            return response()->json(['success' => $profile_update]);
-        }else
+            if ($profile_update) 
+            {
+                $users = User::where('_id', $users->_id)->first();
+                $users['imgUrl'] = url('/storage/image').'/'.$users->image;
+                return response()->json(['success' => $users], 200);
+            }else{
+                return response()->json(['success' => 'fail']);
+            }
+
+        }elseif(!empty($request->name))
+        {
+            $profile_update = User::where('_id', $users->_id)
+                    ->update(['name' => $request->name]);
+            if ($profile_update) 
+            {
+                $users = User::where('_id', $users->_id)->first();
+                $users['imgUrl'] = url('/storage/image').'/'.$users->image;
+                return response()->json(['success' => $users], 200);
+            }else{
+                return response()->json(['success' => 'fail']);
+            }
+
+        }elseif(!empty($request->image))
         {
             $profile_update = User::where('_id', $users->_id)
                     ->update(['image' => $get_imageName]);
-            return response()->json(['success' => $profile_update]);
+            if ($profile_update) 
+            {
+                $users = User::where('_id', $users->_id)->first();
+                $users['imgUrl'] = url('/storage/image').'/'.$users->image;
+                return response()->json(['success' => $users], 200);
+            }else{
+                return response()->json(['success' => 'fail']);
+            }
+           
         }
         
     }

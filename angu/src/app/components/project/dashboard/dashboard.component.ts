@@ -14,8 +14,8 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.Jarwish.userData());
-    this.Jarwis.user().subscribe(
+    //  console.log(this.Jarwis.userdata);
+    this.Jarwis.userProfileData().subscribe(
       data => this.response(data)
     );
   }

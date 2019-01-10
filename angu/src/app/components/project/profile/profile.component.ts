@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from 'src/app/Service/jarwis.service';
 import { empty } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ export class ProfileComponent implements OnInit {
 
   imageURl: string;
   fileToUpload: File = null;
-  public data = null;
+  public data;
   public base_img = null;
   public form = {
     image : null,
@@ -20,20 +21,23 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(
-    private Jarwis: JarwisService
+    private Jarwis: JarwisService,
+    private Router: Router
   ) { }
 
   ngOnInit() {
-    this.Jarwis.user().subscribe(
-      data => this.response(data)
+    this.Jarwis.userProfileData().subscribe(
+       data => this.response(data)
+
     );
+    
   }
 
-  response(data) {
+  response(data){
     this.data = data;
-    if(this.data.success.image)
+    if(empty(this.data.success))
     {
-      this.imageURl = this.Jarwis.baseurl+'storage/image/'+data.success.image;
+      this.imageURl = this.data.success.imgUrl;
     }else{
       this.imageURl = 'assets/images/quickway_user.png'
     }
@@ -41,8 +45,19 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.Jarwis.profilePicUpdate(this.form).subscribe(
-      // data => console.log(data)
-   );
+      data => this.aftersubmit(data),
+      
+    );
+    
+  }
+
+  aftersubmit(data){
+    this.data = data;
+    if(this.data.success !== 'fail')
+    {
+      // this.response(this.data);
+      window.location.reload();
+    }
   }
 
   handleFileInput(file: FileList) {
