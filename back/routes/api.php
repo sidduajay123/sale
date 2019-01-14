@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('checkLogin', 'UserController@checkLogin');
     Route::get('logout', 'UserController@logout');
     Route::post('profile', 'UserController@updateProfile');
+    Route::post('changePassword', 'UserController@changePassword');
     
 });
 

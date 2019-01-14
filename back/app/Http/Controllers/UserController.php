@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 use Validator;
 use App\User;
@@ -136,6 +137,34 @@ class UserController extends Controller
            
         }
         
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        if (Hash::check($request->old_password, $user->password)) 
+        {
+            $validator = Validator::make($request->all(), [
+                'old_password' => 'required',
+                'new_password' => 'required|',
+                'confirm_password' => 'required|same:new_password',
+    
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['error'=>$validator->errors()]);            
+            }else{
+                $user->password = bcrypt($request->new_password);
+                $user->save();
+                
+                return response()->json(['success'=>"Password has been changed"]);
+            }
+            
+        }else
+        {
+            return response()->json(['error'=>"Old Password did not matched"]);
+        }
     }
 
     public function logout()

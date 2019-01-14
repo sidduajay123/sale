@@ -15,7 +15,9 @@ import { JarwisService } from './Service/jarwis.service';
 import { TokenInterceptorService } from './Service/token-interceptor.service';
 import { LeftMenuComponent } from './components/project/left-menu/left-menu.component';
 import { FooterComponent } from './components/project/footer/footer.component';
-
+import { ChangePasswordComponent } from './components/project/change-password/change-password.component';
+import { NotifierModule } from 'angular-notifier';
+import { LeadsComponent } from './components/project/leads/leads.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,15 @@ import { FooterComponent } from './components/project/footer/footer.component';
     ResponseResetComponent,
     LeftMenuComponent,
     FooterComponent,
+    ChangePasswordComponent,
+    LeadsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NotifierModule
   ],
   providers: [
     JarwisService,

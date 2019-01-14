@@ -3,41 +3,46 @@
     <div class="row login d-flex align-items-center">
       <div class="container">
         <form #profileform="ngForm" (ngSubmit)="onSubmit()">
-        <div class="row">	
-        <div class="col-xl-2 col-lg-2 col-md-8 col-sm-12">
-          </div>						
-          <div class="col-xl-10 col-lg-10 col-md-8 col-sm-12 mt-5 log gb">
-            <img [src]="imageURl" class="img-fluid d-block m-auto">
-            <i class="fa fa-camera gb1"></i>
-            <input type="file" #Image (change)="handleFileInput($event.target.files)" accept="image/*"  name="image" class="file-upload">		
-            <div class="clearfix"></div>
-            <div class="he_ad">
-            <div class="col-xl-12">
-              <div class="borr"><h1 class="text-center">Profile</h1></div>
-            <small class="d-block text-center">Your account details</small>
-            <div class="clearfix"></div>
-            <div class="pt-4">
-              
-            <div class="form-group">
-              <label>Name</label>
-              <input type="email" class="form-control ad" [(ngModel)]="form.name" name="name" value={{data?.success?.name}} placeholder="Enter Your Name">	
+          <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-8 col-sm-12">
             </div>
-            <div class="form-group">
-              <label>Your Email</label>
-              <span class="form-control ad">{{data?.success?.email}}</span>
-            </div>        
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary m-auto d-block" [disabled]="!profileform.valid" >Update</button>
-              </div>
+            <div class="col-xl-10 col-lg-10 col-md-8 col-sm-12 mt-5 log gb">
+              <img [src]="imageURl" class="img-fluid d-block m-auto">
+              <i class="fa fa-camera gb1"></i>
+              <input type="file" #Image (change)="handleFileInput($event.target.files)" accept="image/*" name="image"
+                class="file-upload">
               <div class="clearfix"></div>
-              
+              <div class="he_ad">
+                <div class="col-xl-12">
+                  <div class="borr">
+                    <h1 class="text-center">Profile</h1>
+                  </div>
+                  <small class="d-block text-center">Your account details</small>
+                  <div class="clearfix"></div>
+                  <div class="pt-4">
+
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input type="email" class="form-control ad" [(ngModel)]="form.name" name="name" value={{data?.success?.name}}
+                        placeholder="Enter Your Name">
+                    </div>
+                    <div class="form-group">
+                      <label>Your Email</label>
+                      <span class="form-control ad">{{data?.success?.email}}</span>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary m-auto" [disabled]="!profileform.valid">Update Profile</button>
+                      <a routerLink="/change-password" class="btn btn-primary float-right">Change Password</a>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
               </div>
-          </div>
             </div>
-        </div>
+          </div>
+        </form>
       </div>
-      </form>
     </div>
-</div>
-<app-left-menu></app-left-menu>
-<app-footer></app-footer>
+    <app-left-menu></app-left-menu>
+    <app-footer></app-footer>
+    <notifier-container></notifier-container>

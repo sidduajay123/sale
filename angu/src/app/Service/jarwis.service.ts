@@ -29,6 +29,10 @@ export class JarwisService {
     return this.http.post(`${this.baseurl}userLogin`,data)
   }
 
+  changePassword(data){
+    return this.http.post(`${this.baseurl}changePassword`,data)
+  }
+
   logout(){
     return this.http.get(`${this.baseurl}logout`)
   }

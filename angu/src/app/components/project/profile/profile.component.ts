@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from 'src/app/Service/jarwis.service';
 import { empty } from 'rxjs';
-import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-profile',
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private Jarwis: JarwisService,
-    private Router: Router
+    private Notifier: NotifierService
   ) { }
 
   ngOnInit() {
@@ -55,8 +55,10 @@ export class ProfileComponent implements OnInit {
     this.data = data;
     if(this.data.success !== 'fail')
     {
-      // this.response(this.data);
+      this.Notifier.notify('success','Profile updated successfully');
       window.location.reload();
+    }else{
+      this.Notifier.notify('danger','Profile not updated');
     }
   }
 

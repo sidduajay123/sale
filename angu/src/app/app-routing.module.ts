@@ -8,6 +8,8 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { BeforeLoginService } from './Service/before-login.service';
 import { AfterLoginService } from './Service/after-login.service';
+import { ChangePasswordComponent } from './components/project/change-password/change-password.component';
+import { LeadsComponent } from './components/project/leads/leads.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,18 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+    canActivate: [BeforeLoginService]
+  },
+
+  {
+    path: 'request-password-reset',
+    component: RequestResetComponent,
+    canActivate: [BeforeLoginService]
+  },
+
+  {
+    path: 'response-password-reset',
+    component: ResponseResetComponent,
     canActivate: [BeforeLoginService]
   },
 
@@ -35,16 +49,17 @@ const routes: Routes = [
   },
 
   {
-    path: 'request-password-reset',
-    component: RequestResetComponent,
-    canActivate: [BeforeLoginService]
+    path: 'change-password',
+    component: ChangePasswordComponent,
+    canActivate: [AfterLoginService]
   },
 
   {
-    path: 'response-password-reset',
-    component: ResponseResetComponent,
-    canActivate: [BeforeLoginService]
+    path: 'leads',
+    component: LeadsComponent,
+    canActivate: [AfterLoginService]
   },
+ 
 ];
 
 @NgModule({
