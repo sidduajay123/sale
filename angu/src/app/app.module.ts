@@ -17,7 +17,9 @@ import { LeftMenuComponent } from './components/project/left-menu/left-menu.comp
 import { FooterComponent } from './components/project/footer/footer.component';
 import { ChangePasswordComponent } from './components/project/change-password/change-password.component';
 import { NotifierModule } from 'angular-notifier';
-import { LeadsComponent } from './components/project/leads/leads.component';
+import { LeadListComponent } from './components/project/leads/lead-list/lead-list.component';
+import { LeadAddComponent } from './components/project/leads/lead-add/lead-add.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -32,14 +34,16 @@ import { LeadsComponent } from './components/project/leads/leads.component';
     LeftMenuComponent,
     FooterComponent,
     ChangePasswordComponent,
-    LeadsComponent,
+    LeadListComponent,
+    LeadAddComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NotifierModule
+    NotifierModule,
+    DataTablesModule
   ],
   providers: [
     JarwisService,

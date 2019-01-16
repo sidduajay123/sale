@@ -9,7 +9,8 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { BeforeLoginService } from './Service/before-login.service';
 import { AfterLoginService } from './Service/after-login.service';
 import { ChangePasswordComponent } from './components/project/change-password/change-password.component';
-import { LeadsComponent } from './components/project/leads/leads.component';
+import { LeadListComponent } from './components/project/leads/lead-list/lead-list.component';
+import { LeadAddComponent } from './components/project/leads/lead-add/lead-add.component';
 
 const routes: Routes = [
   {
@@ -55,8 +56,14 @@ const routes: Routes = [
   },
 
   {
-    path: 'leads',
-    component: LeadsComponent,
+    path: 'lead',
+    component: LeadListComponent,
+    canActivate: [AfterLoginService]
+  },
+
+  {
+    path: 'lead/add',
+    component: LeadAddComponent,
     canActivate: [AfterLoginService]
   },
  

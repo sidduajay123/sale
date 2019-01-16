@@ -55,4 +55,12 @@ export class JarwisService {
     this.userdata.next(data);
   }
 
+  getlead(){
+    return this.http.get(`${this.baseurl}lead/show`)
+  }
+
+  addlead(data){
+    return this.http.post(`${this.baseurl}lead/store`,data)
+  }
+
 }

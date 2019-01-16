@@ -1,0 +1,64 @@
+<app-left-menu></app-left-menu>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Leads</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active">Leads List</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">         
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Leads Data Listing</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Company</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Product</th>
+                  <th>Location</th>
+                  <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let lead of data.success">
+                  <td>{{lead.person_name}}</td>
+                  <td>{{lead.person_company}}</td>
+                  <td>{{lead.person_email}}</td>
+                  <td>{{lead.person_phone}}</td>
+                  <td>{{lead.person_product}}</td>
+                  <td>{{lead.person_location}}</td>
+                  <td>{{lead.contacted_date}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+<app-footer></app-footer>
+</div>
