@@ -20,6 +20,7 @@ import { NotifierModule } from 'angular-notifier';
 import { LeadListComponent } from './components/project/leads/lead-list/lead-list.component';
 import { LeadAddComponent } from './components/project/leads/lead-add/lead-add.component';
 import { DataTablesModule } from 'angular-datatables';
+import { DataTableDirective  } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     HttpClientModule,
     NotifierModule,
-    DataTablesModule
+    DataTablesModule,
+    
   ],
   providers: [
     JarwisService,
