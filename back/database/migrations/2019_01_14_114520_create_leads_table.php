@@ -20,9 +20,15 @@ class CreateLeadsTable extends Migration
             $table->string('person_company');
             $table->string('person_email');
             $table->string('person_phone');
-            $table->string('person_product');
+            $table->string('person_designation');
             $table->string('person_location');
             $table->string('contacted_date');
+            $table->string('contact_source');
+            $table->string('remark');
+            $table->string('status');
+            $table->string('email_sent');
+            $table->string('email_response');
+            $table->string('interseted_product');
             $table->timestamps();
         });
     }

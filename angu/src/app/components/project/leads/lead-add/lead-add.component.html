@@ -97,19 +97,17 @@
             <div class="card-header">
               <h3 class="card-title">Upload Leads</h3>
             </div>
-            <form>
+            <form #uploadexl="ngForm" (onsubmit)="exelsubmit()">
               <div class="col-md-10">
                 <div class="form-group">
                   <label for="exampleInputFile">File input</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input">
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                  
+                    <div class="form-control">
+                      <input type="file" name="exel_upload" required (change)="handleFileInput($event.target.files)" accept=".xlsx/*" [(ngModel)]="form2.exel_upload" class="form-group">
                     </div>
                     <div class="input-group-append">
-                      <span class="input-group-text" id="">Upload</span>
+                      <button type="submit" class="btn btn-primary" [disabled]="!uploadexl.valid">Upload</button>
                     </div>
-                  </div>
                   <span>upload .xlsx file format</span>
                 </div>
               </div>

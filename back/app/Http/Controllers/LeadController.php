@@ -32,12 +32,17 @@ class LeadController extends Controller
             'person_company' => 'required',
             'person_email' => 'required|email',
             'person_phone' => 'required|max:10',
-            'person_product' => 'required',
+            'person_designation' => 'required',
             'person_location' => 'required',
             'contacted_date' => 'required',
+            'contact_source' => 'required',
+            'remark' => 'required',
+            'status' => 'required',
+            'email_sent' => 'required',
+            'email_response' => 'required',
+            'interseted_product' => 'required',
 
         ]);
-        // return $request;
 
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);            
@@ -45,8 +50,35 @@ class LeadController extends Controller
         {
             $user = Auth::user();
             $request->user_id = $user->_id;
-            $result = Lead::create($request->all());
-            return response()->json(['success'=>'Lead added successfully']);
+
+            $check_record = Lead::where('user_id',$user->id)->
+                            where('person_name',$request->person_name)->
+                            where('person_company',$request->person_company)->
+                            where('person_email',$request->person_email)->
+                            where('person_phone',$request->person_phone)->
+                            where('person_designation',$request->person_designation)
+                                        ->get();
+
+            if ($check_record->isEmpty()) 
+            {
+                $result = Lead::create($request->all());
+                return response()->json(['success'=>'Lead added successfully']);
+            }else
+            {
+                return response()->json(['error'=>'Data already exist']);
+            }
+            
+        }
+    }
+
+    /*
+    Uploading Excel file 
+    */
+
+    public function uploadexcel(Request $request)
+    {
+        if (condition) {
+            # code...
         }
     }
 
