@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Headers} from '@angular/http';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -61,6 +62,11 @@ export class JarwisService {
 
   addlead(data){
     return this.http.post(`${this.baseurl}lead/store`,data)
+  }
+
+  excelpost(data){
+    
+    return this.http.post(`${this.baseurl}lead/uploadexcel`,data,{headers:{'Accept':'application/json'}})
   }
 
 }

@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     {
         Route::post('store', 'LeadController@store');
         Route::get('show', 'LeadController@show');
-        Route::post('uploadexcel', 'UserController@uploadexcel');
+        Route::post('uploadexcel', 'LeadController@uploadexcel');
 
     });
     

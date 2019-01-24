@@ -77,9 +77,9 @@ class LeadController extends Controller
 
     public function uploadexcel(Request $request)
     {
-        if (condition) {
-            # code...
-        }
+        $data =  json_decode($request->file);
+        $res = Lead::save($data);
+        return $res;
     }
 
     /**
