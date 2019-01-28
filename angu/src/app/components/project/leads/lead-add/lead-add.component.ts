@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from 'src/app/Service/jarwis.service';
 import * as XLSX from 'xlsx';
+import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lead-add',
@@ -26,7 +28,9 @@ export class LeadAddComponent implements OnInit {
   formData: any;
   data: any;
   constructor(
-    private Jarwis: JarwisService
+    private Jarwis: JarwisService,
+    private Notifier : NotifierService,
+    private Router : Router
   ) { }
 
   ngOnInit() {
@@ -36,27 +40,6 @@ export class LeadAddComponent implements OnInit {
     console.log(this.form);
   }
 
-  exelsubmit() {
-    console.log(this.form2);
-    /* this.Jarwis.excelpost(this.form2).subscribe(
-      data => console.log(data)
-    ) */
-  }
-
-  /*  handleFileInput(fileInput: any) {
-     let file = fileInput.item(0);
-     // let formData: FormData = new FormData();
-     let reader: FileReader = new FileReader();
-     reader.readAsArrayBuffer(file);
-     // reader.readAsText(file);
-     reader.onload = (e) =>{
-       let exc : any = reader.result;
-       console.log(exc)
-       // formData.append('file', exc);
-       this.Jarwis.excelpost(exc).subscribe(
-         data => console.log(data)
-       );
-     } */
 
   handleFileInput(evt: any) {
     /* wire up file reader */
@@ -75,15 +58,25 @@ export class LeadAddComponent implements OnInit {
       /* save data */
       /* this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 })); */
       this.data = XLSX.utils.sheet_to_json(ws,{raw:true});
-      console.log(XLSX.utils.sheet_to_json(ws,{raw:true}));
       // this.form2.excel_upload = JSON.stringify(this.data)
       let formData: FormData = new FormData();
       formData.append('file', JSON.stringify(this.data));
       this.Jarwis.excelpost(formData).subscribe(
-        data => console.log(data)
+        data => this.excelresp(data)
       );
     };
     reader.readAsBinaryString(target.files[0]);
+  }
+
+  excelresp(data){
+    console.log(data);
+    this.Notifier.notify('success','Excel file uploaded successfully');
+    this.Router.navigateByUrl('/lead');
+    if(data.error){
+      this.Notifier.notify('success','Excel file uploaded successfully');
+    }else{
+      this.Notifier.notify('danger','Data already exists');
+    }
   }
 
 

@@ -74,23 +74,17 @@ class LeadController extends Controller
 
     public function uploadexcel(Request $request)
     {
-        $data = ($request->file);
-        return $data;
-        /*
-            [
-                ['name' => 'Desk', 'price' => 200],
-            ]
-        */;
-        /* $res = Lead::save($data);
-        return $res; */
-        $Lead_res = array();
+        $data = json_decode($request->file);
+        //  return $data;
+        
+        // $Lead_res = array();
         $count = 0;
         $user = Auth::user();
         $request->user_id = $user->_id;
 
         foreach ($data as $key => $lead) 
         {
-            //return $lead->person_name;
+            // return $lead->person_name;
 
             $check_record = Lead::where('user_id', $user->id)->
                 where('person_name', $lead->person_name)->
@@ -102,28 +96,28 @@ class LeadController extends Controller
             // dd($lead);
             if ($check_record->isEmpty()) 
             {
-                $lead = lead::create(
-                    ['user_id' => $user->id],
-                    ['person_name',$lead->person_name],
-                    ['person_company',$lead->person_company],
-                    ['person_email',$lead->person_email],
-                    ['person_phone',$lead->person_phone],
-                    ['person_designation',$lead->person_designation],
-                    ['person_location',$lead->person_location],
-                    ['contacted_date',$lead->contacted_date],
-                    ['contact_source',$lead->contact_source],
-                    ['remark',$lead->remark],
-                    ['status',$lead->status],
-                    ['email_sent',$lead->email_sent],
-                    ['email_response',$lead->email_response],
-                    ['interseted_product',$lead->interseted_product],
-                );
+                $record = new Lead();
+                $record->user_id = $user->id;
+                $record->person_name = $lead->person_name;
+                $record->person_company = $lead->person_company;
+                $record->person_email = $lead->person_email;
+                $record->person_phone = $lead->person_phone;
+                $record->person_designation = $lead->person_designation;
+                $record->person_location = $lead->person_location;
+                $record->contacted_date = $lead->contacted_date;
+                $record->contact_source = $lead->contact_source;
+                $record->remark = $lead->remark;
+                $record->status = $lead->status;
+                $record->email_sent = $lead->email_sent;
+                $record->email_response = $lead->email_response;
+                $record->interseted_product = $lead->interseted_product;
+                $record->save();
                 $count++;
             } 
         }
 
         // $res = Lead::insert($Lead_res);
-        return $Lead_res;
+        // return $Lead_res;
 
         if ($count > 0) 
         {
