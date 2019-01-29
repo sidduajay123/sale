@@ -37,10 +37,7 @@ class LeadController extends Controller
             'contacted_date' => 'required',
             'contact_source' => 'required',
             'remark' => 'required',
-            'status' => 'required',
-            'email_sent' => 'required',
-            'email_response' => 'required',
-            'interseted_product' => 'required',
+            'person_product' => 'required',
 
         ]);
 
