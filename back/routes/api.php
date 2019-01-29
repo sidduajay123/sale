@@ -27,6 +27,10 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('profile', 'UserController@updateProfile');
     Route::post('changePassword', 'UserController@changePassword');
 
+    Route::group(['prefix' => 'product'], function () {
+        Route::get('/','ProductController@index');
+    });
+
     Route::group(['prefix' => 'lead'], function () 
     {
         Route::post('store', 'LeadController@store');

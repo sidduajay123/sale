@@ -4,6 +4,7 @@ import * as XLSX from 'xlsx';
 import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-lead-add',
   templateUrl: './lead-add.component.html',
@@ -19,14 +20,19 @@ export class LeadAddComponent implements OnInit {
     person_product: null,
     person_location: null,
     contacted_date: null,
+    person_designation: null,
+    contact_source: null,
+    remark: null,
 
   }
 
   public form2 = {
     excel_upload: null
   }
+  success:any;
   formData: any;
   data: any;
+  products: any;
   constructor(
     private Jarwis: JarwisService,
     private Notifier : NotifierService,
@@ -34,10 +40,20 @@ export class LeadAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.Jarwis.productlist().subscribe(
+      data => this.productlist(data.success)
+    )
+  }
+
+  productlist(data){
+    this.products = data
   }
 
   onSubmit() {
     console.log(this.form);
+    this.Jarwis.addlead(this.form).subscribe(
+      data => console.log(data)
+    );
   }
 
 

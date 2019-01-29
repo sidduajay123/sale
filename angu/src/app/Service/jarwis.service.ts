@@ -69,4 +69,8 @@ export class JarwisService {
     return this.http.post(`${this.baseurl}lead/uploadexcel`,data,{headers:{'Accept':'application/json'}})
   }
 
+  productlist(){
+    return this.http.get(`${this.baseurl}product`)
+  }
+
 }

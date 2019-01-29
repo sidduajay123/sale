@@ -25,7 +25,7 @@
             <h3 class="card-title">Leads Data Listing</h3>
           </div>
           <!-- /.card-header -->
-          <div class="card-body">
+        <div class="table-responsive">
             <table class="table table-striped table-bordered table-sm row-border hover">
               <thead>
                 <tr>
@@ -33,20 +33,32 @@
                   <th>Company</th>
                   <th>Email</th>
                   <th>Phone</th>
-                  <th>Product</th>
+                  <th>Designation</th>
+                  <th>Interseted In</th>
                   <th>Location</th>
                   <th>Date</th>
+                  <th>Source</th>
+                  <th>Remark</th>
+                  <th>Status</th>
+                  <th>Email Sent</th>
+                  <th>Email Response</th>                  
                 </tr>
               </thead>
-              <tbody *ngIf="data.success?.length > 0">
-                <tr *ngFor="let lead of data.success">
+              <tbody *ngIf="data?.length > 0">
+                <tr *ngFor="let lead of data">
                   <td>{{lead.person_name}}</td>
                   <td>{{lead.person_company}}</td>
                   <td>{{lead.person_email}}</td>
                   <td>{{lead.person_phone}}</td>
-                  <td>{{lead.person_product}}</td>
+                  <td>{{lead.person_designation}}</td>
+                  <td>{{lead.interseted_product}}</td>
                   <td>{{lead.person_location}}</td>
                   <td>{{lead.contacted_date}}</td>
+                  <td>{{lead.contact_source}}</td>
+                  <td>{{lead.remark}}</td>
+                  <td>{{lead.status}}</td>
+                  <td>{{lead.email_sent}}</td>
+                  <td>{{lead.email_response}}</td>                  
                 </tr>
               </tbody>
             </table>
