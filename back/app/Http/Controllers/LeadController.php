@@ -69,20 +69,34 @@ class LeadController extends Controller
     Uploading Excel file
      */
 
-    public function uploadexcel(Request $request)
+    /*  public function uploadexcel(Request $request)
+     {
+        $ar[] = json_decode($request->file);
+        return $ar;
+        // $ar = array($ar);
+        $count = 0;
+        foreach (array($ar) as $key => $value) 
+        {
+            foreach ($value as $key => $res) {
+                return $res;
+            }
+            
+            // $result = Lead::insert($value);
+            $count++;
+        }
+        // $result = Lead::insert(json_decode($request->file));
+        return $count;
+     } */
+
+     public function uploadexcel(Request $request)
     {
         $data = json_decode($request->file);
-        //  return $data;
-        
-        // $Lead_res = array();
         $count = 0;
         $user = Auth::user();
         $request->user_id = $user->_id;
 
         foreach ($data as $key => $lead) 
         {
-            // return $lead->person_name;
-
             $check_record = Lead::where('user_id', $user->id)->
                 where('person_name', $lead->person_name)->
                 where('person_company', $lead->person_company)->
@@ -90,7 +104,6 @@ class LeadController extends Controller
                 where('person_phone', $lead->person_phone)->
                 where('person_designation', $lead->person_designation)
                 ->get();
-            // dd($lead);
             if ($check_record->isEmpty()) 
             {
                 $record = new Lead();
@@ -113,9 +126,6 @@ class LeadController extends Controller
             } 
         }
 
-        // $res = Lead::insert($Lead_res);
-        // return $Lead_res;
-
         if ($count > 0) 
         {
             return response()->json(['success' => $count.' Data Added']);
@@ -123,7 +133,7 @@ class LeadController extends Controller
         {
             return response()->json(['error' => 'No Record added']);
         }
-    }
+    } 
 
     /**
      * Display the specified resource.
