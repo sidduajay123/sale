@@ -73,4 +73,18 @@ export class JarwisService {
     return this.http.get(`${this.baseurl}product`)
   }
 
+  getupdateuser(data){
+    return this.http.get(`${this.baseurl}lead/index/${data.id}`)
+  }
+
+  deletelead(data)
+  {
+    return this.http.get(`${this.baseurl}lead/destroy/${data}`)
+  }
+
+  updatelead(data)
+  {
+    return this.http.post(`${this.baseurl}lead/update`,data)
+  }
+
 }

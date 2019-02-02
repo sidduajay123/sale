@@ -14,9 +14,10 @@ class LeadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $getLead = Lead::where('_id', $id)->first();
+        return $getLead;
     }
 
     /**
@@ -56,7 +57,28 @@ class LeadController extends Controller
                 ->get();
 
             if ($check_record->isEmpty()) {
-                $result = Lead::create($request->all());
+                /* $request->user_id = $user->_id;
+                $request->status = "Fresh Lead";
+                $request->email_sent = 0;
+                $request->email_response = 0;
+                $result = Lead::create($request->all()); */
+
+                $record = new Lead();
+                $record->user_id = $user->id;
+                $record->person_name = $request->person_name;
+                $record->person_company = $request->person_company;
+                $record->person_email = $request->person_email;
+                $record->person_phone = $request->person_phone;
+                $record->person_designation = $request->person_designation;
+                $record->person_location = $request->person_location;
+                $record->contacted_date = $request->contacted_date;
+                $record->contact_source = $request->contact_source;
+                $record->remark = $request->remark;
+                $record->status = "Fresh Lead";
+                $record->email_sent = 0;
+                $record->email_response = 0;
+                $record->interseted_product = $request->person_product;
+                $record->save();
                 return response()->json(['success' => 'Lead added successfully']);
             } else {
                 return response()->json(['error' => 'Data already exist']);
@@ -68,26 +90,7 @@ class LeadController extends Controller
     /*
     Uploading Excel file
      */
-
-    /*  public function uploadexcel(Request $request)
-     {
-        $ar[] = json_decode($request->file);
-        return $ar;
-        // $ar = array($ar);
-        $count = 0;
-        foreach (array($ar) as $key => $value) 
-        {
-            foreach ($value as $key => $res) {
-                return $res;
-            }
-            
-            // $result = Lead::insert($value);
-            $count++;
-        }
-        // $result = Lead::insert(json_decode($request->file));
-        return $count;
-     } */
-
+    
      public function uploadexcel(Request $request)
     {
         $data = json_decode($request->file);
@@ -117,9 +120,9 @@ class LeadController extends Controller
                 $record->contacted_date = $lead->contacted_date;
                 $record->contact_source = $lead->contact_source;
                 $record->remark = $lead->remark;
-                $record->status = $lead->status;
-                $record->email_sent = $lead->email_sent;
-                $record->email_response = $lead->email_response;
+                $record->status = "Fresh Lead";
+                $record->email_sent = 0;
+                $record->email_response = 0;
                 $record->interseted_product = $lead->interseted_product;
                 $record->save();
                 $count++;
@@ -162,9 +165,35 @@ class LeadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // return $id;
+        
+        if (!empty($request)) 
+        {
+            $arrup = array(
+                'person_name' => $request->person_name,
+                'person_company' => $request->person_company,
+                'person_email' => $request->person_email,
+                'person_phone' => $request->person_phone,
+                'person_location' => $request->person_location,
+                'contacted_date' => $request->contacted_date,
+                'person_designation' => $request->person_designation,
+                'contact_source' => $request->contact_source,
+                'remark' => $request->remark
+            );
+            $update = Lead::where('_id', $request->_id)
+                        ->update($arrup);
+            // return $update;
+            if ($update == '1') 
+            {
+                return response()->json(['success' => 'Lead Update Successfully']);
+            }else
+            {
+                return response()->json(['error' => 'Lead is not updated']);
+            }
+        }
+        
     }
 
     /**
@@ -175,6 +204,14 @@ class LeadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Lead::where('_id', $id)->delete();
+
+        if ($delete) 
+        {
+            return response()->json(['success' => 'Lead Deleted Successfully']);
+        }else
+        {
+            return response()->json(['error' => 'No lead deleted']);
+        }
     }
 }

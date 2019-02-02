@@ -13,6 +13,7 @@ export class LeadListComponent implements OnInit {
   success :any;
   public data = [];
   dataTable: any;
+  tData: boolean;
   constructor(
     private Jarwis : JarwisService,
     private chRef: ChangeDetectorRef
@@ -21,7 +22,7 @@ export class LeadListComponent implements OnInit {
   ngOnInit() {
     
     this.Jarwis.getlead().subscribe((data: any[]) => {
-      
+      this.tData = true;
       this.data = data.success;
       // You'll have to wait that changeDetection occurs and projects data into 
       // the HTML template, you can ask Angular to that for you ;-)
@@ -30,10 +31,25 @@ export class LeadListComponent implements OnInit {
       // Now you can use jQuery DataTables :
       const table: any = $('table');
       this.dataTable = table.DataTable({
-        scrollY: true
+        "scrollX": true
       });
-    })
+    })    
   }  
 
+  delete(id)
+    {
+      this.Jarwis.deletelead(id).subscribe(
+        data => this.deletesuccess(data)
+      )
+    }
+
+    deletesuccess(data)
+    {
+      if(data.success)
+      {
+        this.tData = false;
+        this.ngOnInit();
+      }
+    }
 
 }

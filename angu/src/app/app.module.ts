@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { LeadListComponent } from './components/project/leads/lead-list/lead-lis
 import { LeadAddComponent } from './components/project/leads/lead-add/lead-add.component';
 import { DataTablesModule } from 'angular-datatables';
 import { DataTableDirective  } from 'angular-datatables';
+import { EditLeadComponent } from './components/project/leads/edit-lead/edit-lead.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DataTableDirective  } from 'angular-datatables';
     ChangePasswordComponent,
     LeadListComponent,
     LeadAddComponent,
+    EditLeadComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { DataTableDirective  } from 'angular-datatables';
     HttpClientModule,
     NotifierModule,
     DataTablesModule,
-    
+    ReactiveFormsModule,
   ],
   providers: [
     JarwisService,

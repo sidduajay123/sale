@@ -11,6 +11,7 @@ import { AfterLoginService } from './Service/after-login.service';
 import { ChangePasswordComponent } from './components/project/change-password/change-password.component';
 import { LeadListComponent } from './components/project/leads/lead-list/lead-list.component';
 import { LeadAddComponent } from './components/project/leads/lead-add/lead-add.component';
+import { EditLeadComponent } from './components/project/leads/edit-lead/edit-lead.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,13 @@ const routes: Routes = [
     component: LeadAddComponent,
     canActivate: [AfterLoginService]
   },
- 
+
+  {
+    path: 'lead/edit/:id',
+    component: EditLeadComponent,
+    canActivate: [AfterLoginService]
+  },
+
 ];
 
 @NgModule({

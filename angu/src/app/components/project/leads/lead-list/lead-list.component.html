@@ -25,7 +25,7 @@
             <h3 class="card-title">Leads Data Listing</h3>
           </div>
           <!-- /.card-header -->
-        <div class="table-responsive">
+        <div class="table-responsive" *ngIf="tData">
             <table class="table table-striped table-bordered table-sm row-border hover">
               <thead>
                 <tr>
@@ -41,7 +41,8 @@
                   <th>Remark</th>
                   <th>Status</th>
                   <th>Email Sent</th>
-                  <th>Email Response</th>                  
+                  <th>Email Response</th>
+                  <th>Action</th>                  
                 </tr>
               </thead>
               <tbody *ngIf="data?.length > 0">
@@ -58,7 +59,8 @@
                   <td>{{lead.remark}}</td>
                   <td>{{lead.status}}</td>
                   <td>{{lead.email_sent}}</td>
-                  <td>{{lead.email_response}}</td>                  
+                  <td>{{lead.email_response}}</td>       
+                  <td><a routerLink="edit/{{lead._id}}"><i class="fa fa-eye"></i></a><i class="fa fa-trash" (click)="delete(lead._id)"></i></td>           
                 </tr>
               </tbody>
             </table>

@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::post('store', 'LeadController@store');
         Route::get('show', 'LeadController@show');
         Route::post('uploadexcel', 'LeadController@uploadexcel');
+        Route::get('index/{id}', 'LeadController@index');
+        Route::post('update', 'LeadController@update');
+        Route::get('destroy/{id}', 'LeadController@destroy');
 
     });
     

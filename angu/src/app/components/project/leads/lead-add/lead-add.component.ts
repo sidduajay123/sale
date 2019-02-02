@@ -26,9 +26,7 @@ export class LeadAddComponent implements OnInit {
 
   }
 
-  public form2 = {
-    excel_upload: null
-  }
+  
   success:any;
   formData: any;
   data: any;
@@ -50,10 +48,21 @@ export class LeadAddComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
+    // console.log(this.form);
     this.Jarwis.addlead(this.form).subscribe(
-      data => console.log(data)
+      data => this.formsuccess(data)
     );
+    
+
+  }
+
+  formsuccess(data)
+  {
+    if(data.success)
+    {
+      this.Notifier.notify('success','Lead Data added successfully');
+      // this.formData
+    }
   }
 
 
@@ -85,7 +94,7 @@ export class LeadAddComponent implements OnInit {
   }
 
   excelresp(data){
-    console.log(data);
+    // console.log(data);
     this.Notifier.notify('success','Excel file uploaded successfully');
     this.Router.navigateByUrl('/lead');
     if(data.error){
