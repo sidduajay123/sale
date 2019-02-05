@@ -16,9 +16,16 @@ class LeadController extends Controller
      */
     public function index($id)
     {
-        $getLead = Lead::where('_id', $id)->first();
+        $getLead = Lead::where('_id', $id)->where('status',0)->first();
         return $getLead;
     }
+
+    public function allLead(){
+        $user = Auth::user();
+        $getall = Lead::where('user_id', $user->_id)->get();
+
+        return $getall;
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -38,7 +45,7 @@ class LeadController extends Controller
             'contacted_date' => 'required',
             'contact_source' => 'required',
             'remark' => 'required',
-            'person_product' => 'required',
+            'interseted_product' => 'required',
 
         ]);
 
@@ -57,12 +64,7 @@ class LeadController extends Controller
                 ->get();
 
             if ($check_record->isEmpty()) {
-                /* $request->user_id = $user->_id;
-                $request->status = "Fresh Lead";
-                $request->email_sent = 0;
-                $request->email_response = 0;
-                $result = Lead::create($request->all()); */
-
+                
                 $record = new Lead();
                 $record->user_id = $user->id;
                 $record->person_name = $request->person_name;
@@ -74,7 +76,7 @@ class LeadController extends Controller
                 $record->contacted_date = $request->contacted_date;
                 $record->contact_source = $request->contact_source;
                 $record->remark = $request->remark;
-                $record->status = "Fresh Lead";
+                $record->status = 0;
                 $record->email_sent = 0;
                 $record->email_response = 0;
                 $record->interseted_product = $request->person_product;
@@ -120,7 +122,7 @@ class LeadController extends Controller
                 $record->contacted_date = $lead->contacted_date;
                 $record->contact_source = $lead->contact_source;
                 $record->remark = $lead->remark;
-                $record->status = "Fresh Lead";
+                $record->status = 0;
                 $record->email_sent = 0;
                 $record->email_response = 0;
                 $record->interseted_product = $lead->interseted_product;
@@ -148,7 +150,7 @@ class LeadController extends Controller
     {
         $user = Auth::user();
 
-        $lead = Lead::where('user_id', $user->_id)->get();
+        $lead = Lead::where('user_id', $user->_id)->where('status',0)->get();
 
         if ($lead->isNotEmpty()) {
             return response()->json(['success' => $lead]);
@@ -180,7 +182,8 @@ class LeadController extends Controller
                 'contacted_date' => $request->contacted_date,
                 'person_designation' => $request->person_designation,
                 'contact_source' => $request->contact_source,
-                'remark' => $request->remark
+                'remark' => $request->remark,
+                'status' => $request->status
             );
             $update = Lead::where('_id', $request->_id)
                         ->update($arrup);

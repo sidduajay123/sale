@@ -56,6 +56,12 @@ export class JarwisService {
     this.userdata.next(data);
   }
 
+  getalllead(){
+    return this.http.get(`${this.baseurl}gettallLead`)
+  }
+
+  /* Fresh Lead API Start */
+
   getlead(){
     return this.http.get(`${this.baseurl}lead/show`)
   }
@@ -86,5 +92,95 @@ export class JarwisService {
   {
     return this.http.post(`${this.baseurl}lead/update`,data)
   }
+
+  /* End Fresh Lead */
+
+
+  /* Start Warm Lead */
+
+  getwarmlead(){
+    return this.http.get(`${this.baseurl}warmlead/show`)
+  }
+
+  getwarmupdateuser(data){
+    return this.http.get(`${this.baseurl}warmlead/index/${data.id}`)
+  }
+
+  deletewarmlead(data)
+  {
+    return this.http.get(`${this.baseurl}warmlead/destroy/${data}`)
+  }
+
+  updatewarmlead(data)
+  {
+    return this.http.post(`${this.baseurl}warmlead/update`,data)
+  }
+
+  /* End Warm Lead */
+
+  /* Start Hot Lead */
+
+  gethotlead(){
+    return this.http.get(`${this.baseurl}hotlead/show`)
+  }
+
+  gethotupdateuser(data){
+    return this.http.get(`${this.baseurl}hotlead/index/${data.id}`)
+  }
+
+  deletehotlead(data)
+  {
+    return this.http.get(`${this.baseurl}hotlead/destroy/${data}`)
+  }
+
+  updatehotlead(data)
+  {
+    return this.http.post(`${this.baseurl}hotlead/update`,data)
+  }
+
+  /* End Hot Lead */
+
+  /* Start Cold Lead */
+
+  getcoldlead(){
+    return this.http.get(`${this.baseurl}coldlead/show`)
+  }
+
+  getcoldupdateuser(data){
+    return this.http.get(`${this.baseurl}coldlead/index/${data.id}`)
+  }
+
+  deletecoldlead(data)
+  {
+    return this.http.get(`${this.baseurl}coldlead/destroy/${data}`)
+  }
+
+  updatecoldlead(data)
+  {
+    return this.http.post(`${this.baseurl}coldlead/update`,data)
+  }
+
+  /* End Cold Lead */
+  /* Start Dead Lead */
+
+  getdeadlead(){
+    return this.http.get(`${this.baseurl}deadlead/show`)
+  }
+
+  getdeadupdateuser(data){
+    return this.http.get(`${this.baseurl}deadlead/index/${data.id}`)
+  }
+
+  deletedeadlead(data)
+  {
+    return this.http.get(`${this.baseurl}deadlead/destroy/${data}`)
+  }
+
+  updatedeadlead(data)
+  {
+    return this.http.post(`${this.baseurl}deadlead/update`,data)
+  }
+
+  /* End Dead Lead */
 
 }

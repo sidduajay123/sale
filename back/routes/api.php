@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::get('/','ProductController@index');
     });
 
+    Route::get('gettallLead', 'LeadController@allLead');
+
     Route::group(['prefix' => 'lead'], function () 
     {
         Route::post('store', 'LeadController@store');
@@ -41,6 +43,46 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::get('destroy/{id}', 'LeadController@destroy');
 
     });
+
+    Route::group(['prefix' => 'warmlead'], function () 
+    {
+        Route::get('show', 'WarmLeadController@show');
+        Route::get('index/{id}', 'WarmLeadController@index');
+        Route::post('update', 'WarmLeadController@update');
+        Route::get('destroy/{id}', 'WarmLeadController@destroy');
+
+    });
+
+    Route::group(['prefix' => 'hotlead'], function () 
+    {
+        Route::get('show', 'HotLeadController@show');
+        Route::get('index/{id}', 'HotLeadController@index');
+        Route::post('update', 'HotLeadController@update');
+        Route::get('destroy/{id}', 'HotLeadController@destroy');
+
+    });
+
+    Route::group(['prefix' => 'deadlead'], function () 
+    {
+        Route::get('show', 'DeadLeadController@show');
+        Route::get('index/{id}', 'DeadLeadController@index');
+        Route::post('update', 'DeadLeadController@update');
+        Route::get('destroy/{id}', 'DeadLeadController@destroy');
+
+    });
+
+    Route::group(['prefix' => 'coldlead'], function () 
+    {
+        Route::get('show', 'ColdLeadController@show');
+        Route::get('index/{id}', 'ColdLeadController@index');
+        Route::post('update', 'ColdLeadController@update');
+        Route::get('destroy/{id}', 'ColdLeadController@destroy');
+
+    });
+    
+    Route::get('fresh', 'SendMailController@fresh');
     
 });
+
+ 
 

@@ -8,20 +8,55 @@ import { JarwisService } from 'src/app/Service/jarwis.service';
 })
 export class DashboardComponent implements OnInit {
 
-  public data:null;
+  username:any;
+  allLead : any;
+  freshlead : any;
+  warmlead : any;
+  hotlead : any;
+  coldlead : any;
+  deadlead : any;
   constructor(
     private Jarwis : JarwisService
   ) { }
 
   ngOnInit() {
-    //  console.log(this.Jarwis.userdata);
+
     this.Jarwis.userProfileData().subscribe(
       data => this.response(data)
     );
+   
+   this.Jarwis.getalllead().subscribe(
+      data => this.allLead = data
+    )   
+
+   this.Jarwis.getlead().subscribe(
+      data => this.freshlead = data
+    )   
+
+   this.Jarwis.getwarmlead().subscribe(
+      data => this.warmlead = data
+    )   
+
+   this.Jarwis.gethotlead().subscribe(
+      data => this.hotlead = data
+    )  
+
+   this.Jarwis.getcoldlead().subscribe(
+      data => this.coldlead = data
+    )   
+
+   this.Jarwis.getdeadlead().subscribe(
+      data => this.deadlead = data
+    )   
   }
 
   response(data){
-    this.data = data;
+    this.username = data.success;
   }
+
+ /*  fresh(data)
+  {
+    this.freshlead = data.success.length
+  } */
 
 }

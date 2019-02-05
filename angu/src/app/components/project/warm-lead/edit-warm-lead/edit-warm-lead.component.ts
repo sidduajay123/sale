@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router, UrlSegment } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { JarwisService } from 'src/app/Service/jarwis.service';
-import { FormGroup, FormsModule, FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-lead',
-  templateUrl: './edit-lead.component.html',
-  styleUrls: ['./edit-lead.component.css']
+  selector: 'app-edit-warm-lead',
+  templateUrl: './edit-warm-lead.component.html',
+  styleUrls: ['./edit-warm-lead.component.css']
 })
-export class EditLeadComponent implements OnInit {
+export class EditWarmLeadComponent implements OnInit {
 
   constructor(
     private Router: Router,
@@ -41,25 +41,21 @@ export class EditLeadComponent implements OnInit {
 
   ngOnInit() {
 
-    this.Jarwis.getupdateuser(this.currentUrl).subscribe(
+    this.Jarwis.getwarmupdateuser(this.currentUrl).subscribe(
       data => this.setvalue(data)     
     )   
     this.Jarwis.productlist().subscribe(
       data => this.productlist(data)
-      // data => console.log(data)
     )
-    // console.log(this.products)
    
   }
 
   productlist(data){
-    // console.log(data)
     this.products = data.success
   }
 
   setvalue(data)
   {
-    console.log(data)
     this.editForm.setValue({
       _id:data._id,
       person_name:data.person_name,
@@ -77,7 +73,7 @@ export class EditLeadComponent implements OnInit {
   }
 
   onSubmit(){
-    this.Jarwis.updatelead(this.editForm.value).subscribe(
+    this.Jarwis.updatewarmlead(this.editForm.value).subscribe(
       data => this.updated(data)
     )
   }
@@ -87,7 +83,7 @@ export class EditLeadComponent implements OnInit {
 
     if(data.success)
     {
-      this.Router.navigateByUrl('/lead');
+      this.Router.navigateByUrl('/warmlead');
     }
     
   }

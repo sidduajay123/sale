@@ -57,7 +57,7 @@
                   <td>{{lead.contacted_date}}</td>
                   <td>{{lead.contact_source}}</td>
                   <td>{{lead.remark}}</td>
-                  <td *ngIf="lead.status == 0">Fresh Lead</td>
+                  <td *ngIf="lead.status == 4">Dead Lead</td>
                   <td>{{lead.email_sent}}</td>
                   <td>{{lead.email_response}}</td>       
                   <td><a routerLink="edit/{{lead._id}}"><i class="fa fa-eye"></i></a><i class="fa fa-trash" (click)="delete(lead._id)"></i></td>           

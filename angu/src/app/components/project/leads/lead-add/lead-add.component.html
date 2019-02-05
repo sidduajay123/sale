@@ -78,7 +78,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Interseted Product</label>
-                        <select [(ngModel)]="form.person_product" class="form-control" required name="person_product"> 
+                        <select [(ngModel)]="form.interseted_product" class="form-control" required name="interseted_product"> 
                             <option class="form-control" disabled>Choose a Product</option>                         
                           <option *ngFor="let product of products" [ngValue]="product.product">{{product.product}}</option>
                         </select>

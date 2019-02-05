@@ -17,7 +17,7 @@ export class LeadAddComponent implements OnInit {
     person_company: null,
     person_email: null,
     person_phone: null,
-    person_product: null,
+    interseted_product: null,
     person_location: null,
     contacted_date: null,
     person_designation: null,
@@ -39,16 +39,15 @@ export class LeadAddComponent implements OnInit {
 
   ngOnInit() {
     this.Jarwis.productlist().subscribe(
-      data => this.productlist(data.success)
+      data => this.productlist(data)
     )
   }
 
   productlist(data){
-    this.products = data
+    this.products = data.success
   }
 
   onSubmit() {
-    // console.log(this.form);
     this.Jarwis.addlead(this.form).subscribe(
       data => this.formsuccess(data)
     );
@@ -61,7 +60,7 @@ export class LeadAddComponent implements OnInit {
     if(data.success)
     {
       this.Notifier.notify('success','Lead Data added successfully');
-      // this.formData
+      
     }
   }
 
@@ -94,7 +93,6 @@ export class LeadAddComponent implements OnInit {
   }
 
   excelresp(data){
-    // console.log(data);
     this.Notifier.notify('success','Excel file uploaded successfully');
     this.Router.navigateByUrl('/lead');
     if(data.error){

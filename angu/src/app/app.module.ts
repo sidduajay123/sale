@@ -22,6 +22,14 @@ import { LeadAddComponent } from './components/project/leads/lead-add/lead-add.c
 import { DataTablesModule } from 'angular-datatables';
 import { DataTableDirective  } from 'angular-datatables';
 import { EditLeadComponent } from './components/project/leads/edit-lead/edit-lead.component';
+import { EditWarmLeadComponent } from './components/project/warm-lead/edit-warm-lead/edit-warm-lead.component';
+import { ListWarmLeadComponent } from './components/project/warm-lead/list-warm-lead/list-warm-lead.component';
+import { EditHotLeadComponent } from './components/project/hot-lead/edit-hot-lead/edit-hot-lead.component';
+import { ListHotLeadComponent } from './components/project/hot-lead/list-hot-lead/list-hot-lead.component';
+import { EditColdLeadComponent } from './components/project/cold-lead/edit-cold-lead/edit-cold-lead.component';
+import { ListColdLeadComponent } from './components/project/cold-lead/list-cold-lead/list-cold-lead.component';
+import { EditDeadLeadComponent } from './components/project/dead-lead/edit-dead-lead/edit-dead-lead.component';
+import { ListDeadLeadComponent } from './components/project/dead-lead/list-dead-lead/list-dead-lead.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +47,14 @@ import { EditLeadComponent } from './components/project/leads/edit-lead/edit-lea
     LeadListComponent,
     LeadAddComponent,
     EditLeadComponent,
+    EditWarmLeadComponent,
+    ListWarmLeadComponent,
+    EditHotLeadComponent,
+    ListHotLeadComponent,
+    EditColdLeadComponent,
+    ListColdLeadComponent,
+    EditDeadLeadComponent,
+    ListDeadLeadComponent,
   ],
   imports: [
     BrowserModule,

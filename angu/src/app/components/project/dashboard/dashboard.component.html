@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Welcome {{data?.success?.name}}</h1>
+                    <h1 class="m-0 text-dark">Welcome {{username.name}}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
                     <!-- small box -->
                     <div class="small-box bg-primary">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{allLead.length}}</h3>
 
                             <p>All Leads</p>
                         </div>
@@ -41,7 +41,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53</h3>
+                            <h3>{{freshlead.success.length}}</h3>
 
                             <p>Fresh Leads</p>
                         </div>
@@ -56,7 +56,7 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{warmlead.success.length}}</h3>
 
                             <p>Warm Leads</p>
                         </div>
@@ -71,7 +71,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{hotlead.success.length}}</h3>
 
                             <p>Hot Leads</p>
                         </div>
@@ -85,7 +85,7 @@
                     <!-- small box -->
                     <div class="small-box bg-secondary">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{coldlead.success.length}}</h3>
 
                             <p>Cold Leads</p>
                         </div>
@@ -99,7 +99,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{deadlead.success.length}}</h3>
 
                             <p>Dead Leads</p>
                         </div>
@@ -111,46 +111,7 @@
                 </div>
                 <!-- ./col -->
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card bg-success-gradient">
-                        <div class="card-header no-border">
-
-                            <h3 class="card-title">
-                                <i class="fa fa-calendar"></i>
-                                Calendar
-                            </h3>
-                            <!-- tools card -->
-                            <div class="card-tools">
-                                <!-- button with a dropdown -->
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fa fa-bars"></i></button>
-                                    <div class="dropdown-menu float-right" role="menu">
-                                        <a href="#" class="dropdown-item">Add new event</a>
-                                        <a href="#" class="dropdown-item">Clear events</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href="#" class="dropdown-item">View calendar</a>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-success btn-sm" data-widget="collapse">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-success btn-sm" data-widget="remove">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </div>
-                            <!-- /. tools -->
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <!--The calendar -->
-                            <div id="calendar" style="width: 100%"></div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </section>
     <app-left-menu></app-left-menu>

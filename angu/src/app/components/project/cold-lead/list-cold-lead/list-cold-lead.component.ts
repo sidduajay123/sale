@@ -1,15 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { JarwisService } from 'src/app/Service/jarwis.service';
 
- 
 @Component({
-  selector: 'app-lead-list',
-  templateUrl: './lead-list.component.html',
-  styleUrls: ['./lead-list.component.css']
+  selector: 'app-list-cold-lead',
+  templateUrl: './list-cold-lead.component.html',
+  styleUrls: ['./list-cold-lead.component.css']
 })
+export class ListColdLeadComponent implements OnInit {
 
-export class LeadListComponent implements OnInit {
- 
   success :any;
   public data = [];
   dataTable: any;
@@ -21,7 +19,7 @@ export class LeadListComponent implements OnInit {
 
   ngOnInit() {
     
-    this.Jarwis.getlead().subscribe((data: any) => {
+    this.Jarwis.getcoldlead().subscribe((data: any) => {
       this.tData = true;
       this.data = data.success;
       // You'll have to wait that changeDetection occurs and projects data into 
@@ -36,9 +34,9 @@ export class LeadListComponent implements OnInit {
     })    
   }  
 
-  delete(id)
+  delete(id: any)
     {
-      this.Jarwis.deletelead(id).subscribe(
+      this.Jarwis.deletecoldlead(id).subscribe(
         data => this.deletesuccess(data)
       )
     }
