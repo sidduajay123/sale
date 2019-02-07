@@ -25,7 +25,7 @@ export class LeftMenuComponent implements OnInit {
 
   response(data) {
     this.data = data;
-    if(!empty(data.success))
+    if(data.success.image != "")
     {
       this.image = this.data.success.imgUrl;
     }else{

@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('queuework', function () {
+    Artisan::call('queue:work');
+    response()->json(['success'=>'Queue completed successfully']);
+});
 
 Route::post('userLogin', 'UserController@userLogin');
 Route::post('userRegister', 'UserController@userRegister');
@@ -80,7 +84,9 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     });
     
-    Route::get('fresh', 'SendMailController@fresh');
+    Route::get('fresh', 'SendFreshMailController@fresh');
+    Route::get('reminder', 'SendFreshMailController@reminder');
+    
     
 });
 

@@ -53,7 +53,22 @@ export class DashboardComponent implements OnInit {
   response(data){
     this.username = data.success;
   }
+  
 
+  freshmail()
+  {
+    // console.log('hello')
+    this.Jarwis.sendfreshemail().subscribe()
+
+    this.Jarwis.queuework().subscribe()
+  }
+  reminder()
+  {
+    // console.log('hello')
+    this.Jarwis.sendreminderemail().subscribe()
+
+    this.Jarwis.queuework().subscribe()
+  }
  /*  fresh(data)
   {
     this.freshlead = data.success.length

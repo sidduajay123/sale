@@ -29,4 +29,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function lead()
+    {
+        return $this->hasMany('App\Lead', 'user_id', '_id');
+    }
 }

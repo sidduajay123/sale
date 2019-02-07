@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
 
   response(data){
     this.data = data;
-    if(empty(this.data.success))
+    if(data.success.image != "")
     {
       this.imageURl = this.data.success.imgUrl;
     }else{

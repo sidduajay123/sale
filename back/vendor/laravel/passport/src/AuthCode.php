@@ -2,7 +2,7 @@
 
 namespace Laravel\Passport;
 
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class AuthCode extends Model
 {
@@ -12,6 +12,13 @@ class AuthCode extends Model
      * @var string
      */
     protected $table = 'oauth_auth_codes';
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The guarded attributes on the model.

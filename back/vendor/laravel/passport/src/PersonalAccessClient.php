@@ -2,7 +2,7 @@
 
 namespace Laravel\Passport;
 
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class PersonalAccessClient extends Model
 {

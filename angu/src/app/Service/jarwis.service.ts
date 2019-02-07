@@ -183,4 +183,26 @@ export class JarwisService {
 
   /* End Dead Lead */
 
+  /* Start Queue Worker */
+
+  queuework()
+  {
+    return this.http.get(`${this.baseurl}queuework`)
+  }
+  /* End Queue Worker */
+
+  /* Send Fresh Email */
+  sendfreshemail()
+  {
+    return this.http.get(`${this.baseurl}fresh`)
+  }
+  /* End Send Fresh Email */
+
+  /* Send Reminder Email */
+  sendreminderemail()
+  {
+    return this.http.get(`${this.baseurl}reminder`)
+  }
+  /* End Send Reminder Email */
+
 }
