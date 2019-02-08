@@ -21,5 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'HomeController@welcome');
 Route::get('/signin', 'AuthController@signin');
-Route::get('/callback', 'AuthController@callback');
+Route::get('/authorize', 'AuthController@gettoken');
 Route::get('/signout', 'AuthController@signout');
+Route::get('/mail', 'OutlookController@mail')->name('mail');
+Route::get('/mail/{id}', 'OutlookController@oneMail');

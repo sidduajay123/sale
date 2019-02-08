@@ -2,13 +2,10 @@
 
 @section('content')
 <div class="jumbotron">
-  <h1>PHP Graph Tutorial</h1>
-  <p class="lead">This sample app shows how to use the Microsoft Graph API to access Outlook and OneDrive data from PHP</p>
-  @if(isset($userName))
-    <h4>Welcome {{ $userName }}!</h4>
-    <p>Use the navigation bar at the top of the page to get started.</p>
-  @else
-    <a href="/signin" class="btn btn-primary btn-large">Click here to sign in</a>
-  @endif
+  <h1>PHP Outlook Sample</h1>
+  <p>This example shows how to get an OAuth token from Azure using the <a href="https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code" target="_blank">authorization code grant flow</a> and to use that token to make calls to the Outlook APIs in the <a href="https://docs.microsoft.com/en-us/graph/overview" target="_blank">Microsoft Graph</a>.</p>
+  <p>
+    <a class="btn btn-lg btn-primary" href="{{url('/signin')}}" role="button" id="connect-button">Connect to Outlook</a>
+  </p>
 </div>
 @endsection

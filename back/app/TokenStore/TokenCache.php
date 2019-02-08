@@ -3,39 +3,35 @@
 namespace App\TokenStore;
 
 class TokenCache {
-  public function storeTokens($accessToken, $user) {
-    session([
-      'accessToken' => $accessToken->getToken(),
-      'refreshToken' => $accessToken->getRefreshToken(),
-      'tokenExpires' => $accessToken->getExpires(),
-      'userName' => $user->getDisplayName(),
-      'userEmail' => null !== $user->getMail() ? $user->getMail() : $user->getUserPrincipalName()
-    ]);
+  public function storeTokens($access_token, $refresh_token, $expires) {
+    $_SESSION['access_token'] = $access_token;
+    $_SESSION['refresh_token'] = $refresh_token;
+    $_SESSION['token_expires'] = $expires;
+    // dd($_SESSION);
   }
 
   public function clearTokens() {
-    session()->forget('accessToken');
-    session()->forget('refreshToken');
-    session()->forget('tokenExpires');
-    session()->forget('userName');
-    session()->forget('userEmail');
+    unset($_SESSION['access_token']);
+    unset($_SESSION['refresh_token']);
+    unset($_SESSION['token_expires']);
   }
 
-  public function getAccessToken() {
+  public function getAccessToken() 
+  {
     // Check if tokens exist
-    if (empty(session('accessToken')) ||
-        empty(session('refreshToken')) ||
-        empty(session('tokenExpires'))) {
+    if (empty($_SESSION['access_token']) ||
+        empty($_SESSION['refresh_token']) ||
+        empty($_SESSION['token_expires'])) {
       return '';
     }
-  
+
     // Check if token is expired
     //Get current time + 5 minutes (to allow for time differences)
     $now = time() + 300;
-    if (session('tokenExpires') <= $now) {
+    if ($_SESSION['token_expires'] <= $now) {
       // Token is expired (or very close to it)
       // so let's refresh
-  
+
       // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
         'clientId'                => env('OAUTH_APP_ID'),
@@ -46,32 +42,25 @@ class TokenCache {
         'urlResourceOwnerDetails' => '',
         'scopes'                  => env('OAUTH_SCOPES')
       ]);
-  
+
       try {
         $newToken = $oauthClient->getAccessToken('refresh_token', [
-          'refresh_token' => session('refreshToken')
+          'refresh_token' => $_SESSION['refresh_token']
         ]);
-  
+
         // Store the new values
-        $this->updateTokens($newToken);
-  
+        $this->   storeTokens($newToken->getToken(), $newToken->getRefreshToken(),
+          $newToken->getExpires());
+
         return $newToken->getToken();
       }
       catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
         return '';
       }
     }
-  
-    // Token is still valid, just return it
-    return session('accessToken');
-  }
-
-  public function updateTokens($accessToken) 
-  {
-    session([
-      'accessToken' => $accessToken->getToken(),
-      'refreshToken' => $accessToken->getRefreshToken(),
-      'tokenExpires' => $accessToken->getExpires()
-    ]);
+    else {
+      // Token is still valid, just return it
+      return $_SESSION['access_token'];
+    }
   }
 }

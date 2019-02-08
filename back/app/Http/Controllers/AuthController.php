@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Microsoft\Graph\Graph;
-use Microsoft\Graph\Model;
-use App\TokenStore\TokenCache;
 
 class AuthController extends Controller
 {
   public function signin()
   {
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
+
     // Initialize the OAuth client
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
       'clientId'                => env('OAUTH_APP_ID'),
@@ -23,31 +23,33 @@ class AuthController extends Controller
       'scopes'                  => env('OAUTH_SCOPES')
     ]);
 
-    $authUrl = $oauthClient->getAuthorizationUrl();
+      // Generate the auth URL
+      $authorizationUrl = $oauthClient->getAuthorizationUrl();
 
-    // Save client state so we can validate in callback
-    session(['oauthState' => $oauthClient->getState()]);
+      // Save client state so we can validate in response
+      $_SESSION['oauth_state'] = $oauthClient->getState();
 
-    // Redirect to AAD signin page
-    return redirect()->away($authUrl);
+      // Redirect to authorization endpoint
+      header('Location: '.$authorizationUrl);
+      exit();
   }
 
-  public function callback(Request $request)
+  public function gettoken()
   {
-    // Validate state
-    $expectedState = session('oauthState');
-    $request->session()->forget('oauthState');
-    $providedState = $request->query('state');
-
-    if (!isset($expectedState) || !isset($providedState) || $expectedState != $providedState) {
-      return redirect('/')
-        ->with('error', 'Invalid auth state')
-        ->with('errorDetail', 'The provided auth state did not match the expected value');
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
     }
 
     // Authorization code should be in the "code" query param
-    $authCode = $request->query('code');
-    if (isset($authCode)) {
+    if (isset($_GET['code'])) {
+      // Check that state matches
+      if (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth_state'])) {
+        exit('State provided in redirect does not match expected value.');
+      }
+
+      // Clear saved state
+      unset($_SESSION['oauth_state']);
+
       // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
         'clientId'                => env('OAUTH_APP_ID'),
@@ -62,36 +64,31 @@ class AuthController extends Controller
       try {
         // Make the token request
         $accessToken = $oauthClient->getAccessToken('authorization_code', [
-          'code' => $authCode
+          'code' => $_GET['code']
         ]);
-      
-        $graph = new Graph();
-        $graph->setAccessToken($accessToken->getToken());
-      
-        $user = $graph->createRequest('GET', '/me')
-          ->setReturnType(Model\User::class)
-          ->execute();
-      
-        $tokenCache = new TokenCache();
-        $tokenCache->storeTokens($accessToken, $user);
-      
-        return redirect('/');
+          // dd($accessToken);
+        // Save the access token and refresh tokens in session
+        // This is for demo purposes only. A better method would
+        // be to store the refresh token in a secured database
+        $tokenCache = new \App\TokenStore\TokenCache;
+        $tokenCache->storeTokens($accessToken->getToken(), $accessToken->getRefreshToken(),
+          $accessToken->getExpires());
+        // Redirect back to mail page
+        return redirect()->route('mail');
       }
       catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
-        return redirect('/')
-          ->with('error', 'Error requesting access token')
-          ->with('errorDetail', $e->getMessage());
+        exit('ERROR getting tokens: '.$e->getMessage());
       }
+      exit();
     }
-
-    return redirect('/')
-      ->with('error', $request->query('error'))
-      ->with('errorDetail', $request->query('error_description'));
+    elseif (isset($_GET['error'])) {
+      exit('ERROR: '.$_GET['error'].' - '.$_GET['error_description']);
+    }
   }
 
   public function signout()
     {
-        $tokenCache = new TokenCache();
+        $tokenCache = new \App\TokenStore\TokenCache();
         $tokenCache->clearTokens();
         return redirect('/');
     }
