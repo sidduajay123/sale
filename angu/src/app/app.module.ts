@@ -30,6 +30,19 @@ import { EditColdLeadComponent } from './components/project/cold-lead/edit-cold-
 import { ListColdLeadComponent } from './components/project/cold-lead/list-cold-lead/list-cold-lead.component';
 import { EditDeadLeadComponent } from './components/project/dead-lead/edit-dead-lead/edit-dead-lead.component';
 import { ListDeadLeadComponent } from './components/project/dead-lead/list-dead-lead/list-dead-lead.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
+import { HomeComponent } from './components/project/mail/home/home.component';
+import { AlertComponent } from './components/project/mail/alert/alert.component';
+import { MsalModule } from '@azure/msal-angular';
+import { OAuthSettings } from '../oauth';
+import { ViewMailComponent } from './components/project/mail/view-mail/view-mail.component';
+
+library.add(faExternalLinkAlt);
+library.add(faUserCircle);
 
 @NgModule({
   declarations: [
@@ -55,6 +68,9 @@ import { ListDeadLeadComponent } from './components/project/dead-lead/list-dead-
     ListColdLeadComponent,
     EditDeadLeadComponent,
     ListDeadLeadComponent,
+    HomeComponent,
+    AlertComponent,
+    ViewMailComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +80,11 @@ import { ListDeadLeadComponent } from './components/project/dead-lead/list-dead-
     NotifierModule,
     DataTablesModule,
     ReactiveFormsModule,
+    NgbModule,
+    FontAwesomeModule,
+    MsalModule.forRoot({
+      clientID: OAuthSettings.appId
+    }),
   ],
   providers: [
     JarwisService,

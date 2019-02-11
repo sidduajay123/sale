@@ -20,6 +20,8 @@ import { EditHotLeadComponent } from './components/project/hot-lead/edit-hot-lea
 import { ListHotLeadComponent } from './components/project/hot-lead/list-hot-lead/list-hot-lead.component';
 import { EditWarmLeadComponent } from './components/project/warm-lead/edit-warm-lead/edit-warm-lead.component';
 import { ListWarmLeadComponent } from './components/project/warm-lead/list-warm-lead/list-warm-lead.component';
+import { HomeComponent } from './components/project/mail/home/home.component';
+import { ViewMailComponent } from './components/project/mail/view-mail/view-mail.component';
 
 const routes: Routes = [
   {
@@ -152,6 +154,21 @@ const routes: Routes = [
   },
 
   /* End Dead Lead URL */
+
+  /* Outlook Mail  */
+  {
+    path: 'mail/inbox',
+    component: HomeComponent,
+    canActivate: [AfterLoginService]
+  },
+
+  {
+    path: 'mail/view/:id',
+    component: ViewMailComponent,
+    canActivate: [AfterLoginService]
+  },
+
+  
 
 ];
 
