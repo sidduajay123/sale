@@ -7,21 +7,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class FreshLeadMail extends Mailable
+class SendNowMail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    protected $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-
-    protected $leaddata;
-
     public function __construct($request)
     {
-        $this->leaddata = $request;
+        $this->user = $request;
     }
 
     /**
@@ -31,6 +30,6 @@ class FreshLeadMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Introduction about us')->view('email.freshlead')->with(['lead'=>$this->leaddata]);
+        return $this->subject($this->user->mail_subject)->view('email.sendnow')->with(['user'=>$this->user->mail_content]);
     }
 }

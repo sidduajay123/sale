@@ -83,9 +83,21 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::get('destroy/{id}', 'ColdLeadController@destroy');
 
     });
+
+    Route::group(['prefix' => 'contact'], function () 
+    {
+        Route::post('store', 'ContactController@store');
+        Route::get('show', 'ContactController@show');
+        Route::post('uploadexcel', 'ContactController@uploadexcel');
+        Route::get('index/{id}', 'ContactController@index');
+        Route::post('update', 'ContactController@update');
+        Route::get('destroy/{id}', 'ContactController@destroy');
+
+    });
     
     Route::get('fresh', 'SendFreshMailController@fresh');
     Route::get('reminder', 'SendFreshMailController@reminder');
+    Route::post('sendnow', 'SendFreshMailController@sendnow');
     
     
 });
