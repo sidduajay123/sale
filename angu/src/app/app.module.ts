@@ -40,6 +40,10 @@ import { AlertComponent } from './components/project/mail/alert/alert.component'
 import { MsalModule } from '@azure/msal-angular';
 import { OAuthSettings } from '../oauth';
 import { ViewMailComponent } from './components/project/mail/view-mail/view-mail.component';
+import { AddComponent } from './components/project/contact/add/add.component';
+import { ListComponent } from './components/project/contact/list/list.component';
+import { EditComponent } from './components/project/contact/edit/edit.component';
+import { ComposeMailComponent } from './components/project/mail/compose-mail/compose-mail.component';
 
 library.add(faExternalLinkAlt);
 library.add(faUserCircle);
@@ -71,6 +75,10 @@ library.add(faUserCircle);
     HomeComponent,
     AlertComponent,
     ViewMailComponent,
+    AddComponent,
+    ListComponent,
+    EditComponent,
+    ComposeMailComponent,
   ],
   imports: [
     BrowserModule,

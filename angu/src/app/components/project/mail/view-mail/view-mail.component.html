@@ -1,4 +1,5 @@
 <div class="col-md-12" style="left: 135px;position: relative;">
+  <a routerLink="/mail/inbox"><button class="btn btn-primary">Back</button></a>
     <div class="card card-primary card-outline">
       <div class="card-header">
         <h3 class="card-title">Read Mail</h3>
@@ -7,9 +8,9 @@
       <!-- /.card-header -->
       <div class="card-body p-0">
         <div class="mailbox-read-info">
-          <h5>{{data.subject}}</h5>
-          <h6>From: {{data.from.emailAddress.address}}
-            <span class="mailbox-read-time float-right">{{data.receivedDateTime | date: 'M/d/yy, h:mm a'}}</span></h6>
+          <h5>{{data?.subject}}</h5>
+          <h6>From: {{data?.from?.emailAddress?.address}}
+            <span class="mailbox-read-time float-right">{{data?.receivedDateTime | date: 'M/d/yy, h:mm a'}}</span></h6>
         </div>
        
         <!-- /.mailbox-controls -->

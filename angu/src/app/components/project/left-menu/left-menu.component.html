@@ -23,8 +23,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="" class="nav-link active">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Dashboard
@@ -33,15 +33,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="/" class="nav-link active">
+                <a routerLink="/" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-pie-chart"></i>
               <p>
                 Lead
@@ -50,21 +50,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="/lead" class="nav-link">
+                <a routerLink="/lead" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a routerLink="/lead/add" class="nav-link">
+                <a routerLink="/lead/add" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Add</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-tree"></i>
               <p>
                 Cold Lead
@@ -73,15 +73,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="/coldlead" class="nav-link">
+                <a routerLink="/coldlead" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-edit"></i>
               <p>
                 Warm Lead
@@ -90,15 +90,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="/warmlead" class="nav-link">
+                <a routerLink="/warmlead" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-fire"></i>
               <p>
                 Hot Lead
@@ -107,15 +107,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="/hotlead" class="nav-link">
+                <a routerLink="/hotlead" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Dead Lead
@@ -124,15 +124,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="/deadlead" class="nav-link">
+                <a routerLink="/deadlead" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-envelope-o"></i>
               <p>
                 Mailbox
@@ -141,27 +141,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a routerLink="/mail/inbox" class="nav-link">
+                <a routerLink="/mail/inbox" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Inbox</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
+                <a routerLink="/mail/compose" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Compose</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Sent</p>
-                </a>
-              </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Template
@@ -170,33 +164,33 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="#" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Introductory</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/profile.html" class="nav-link">
+                <a href="#" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/login.html" class="nav-link">
+                <a href="#" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Meeting</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/register.html" class="nav-link">
+                <a href="#" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Reminder</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" routerLinkActive="menu-open">
+            <a href="#" class="nav-link" routerLinkActive="active">
               <i class="nav-icon fa fa-plus-square-o"></i>
               <p>
                 Contact
@@ -205,13 +199,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/404.html" class="nav-link">
+                <a routerLink="/contact" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/500.html" class="nav-link">
+                <a routerLink="/contact/add" class="nav-link" routerLinkActive="active-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Add</p>
                 </a>

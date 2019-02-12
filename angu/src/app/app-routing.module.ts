@@ -22,6 +22,10 @@ import { EditWarmLeadComponent } from './components/project/warm-lead/edit-warm-
 import { ListWarmLeadComponent } from './components/project/warm-lead/list-warm-lead/list-warm-lead.component';
 import { HomeComponent } from './components/project/mail/home/home.component';
 import { ViewMailComponent } from './components/project/mail/view-mail/view-mail.component';
+import { ListComponent } from './components/project/contact/list/list.component';
+import { AddComponent } from './components/project/contact/add/add.component';
+import { EditComponent } from './components/project/contact/edit/edit.component';
+import { ComposeMailComponent } from './components/project/mail/compose-mail/compose-mail.component';
 
 const routes: Routes = [
   {
@@ -163,12 +167,40 @@ const routes: Routes = [
   },
 
   {
+    path: 'mail/compose',
+    component: ComposeMailComponent,
+    canActivate: [AfterLoginService]
+  },
+
+  {
     path: 'mail/view/:id',
     component: ViewMailComponent,
     canActivate: [AfterLoginService]
   },
 
-  
+  /* End Outlook Mail  */
+
+  /* Contact Start */
+
+  {
+    path: 'contact',
+    component: ListComponent,
+    canActivate: [AfterLoginService]
+  },
+
+  {
+    path: 'contact/add',
+    component: AddComponent,
+    canActivate: [AfterLoginService]
+  },
+
+  {
+    path: 'contact/edit/:id',
+    component: EditComponent,
+    canActivate: [AfterLoginService]
+  },
+
+   /* End Contact Start */
 
 ];
 

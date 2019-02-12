@@ -10,6 +10,14 @@
     border: 1px solid green;
 }
 
+textarea.ng-touched.ng-invalid:not(form){
+    border: 1px solid red;
+}
+
+textarea.ng-valid:not(form){
+    border: 1px solid green;
+}
+
 .content-wrapper{width: 98% !important; float: right !important; right: -118px !important; position: relative}
 
 /* Style debug info in alerts */

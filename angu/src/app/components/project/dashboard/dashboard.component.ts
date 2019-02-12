@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { JarwisService } from 'src/app/Service/jarwis.service';
 
 @Component({

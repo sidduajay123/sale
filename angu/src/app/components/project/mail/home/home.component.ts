@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   userP(data) {
+    // window.location.reload();
     if (data) {
       this.authenticated = true;
       this.authService.getMails().then(
@@ -42,9 +43,9 @@ export class HomeComponent implements OnInit {
 
   userdata(data)
   {
+    // window.location.reload();
     this.user = data
     
-    console.log(this.user)
   }
   async signIn(): Promise<void> {
     await this.authService.signIn();

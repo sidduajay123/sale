@@ -205,4 +205,44 @@ export class JarwisService {
   }
   /* End Send Reminder Email */
 
+
+  /* Send Email Now */
+  sendemailnow(data)
+  {
+    return this.http.post(`${this.baseurl}sendnow`,data)
+  }
+  /* End Send Email now */
+
+    /* Contact API Start */
+
+    getcontact(){
+      return this.http.get(`${this.baseurl}contact/show`)
+    }
+  
+    addcontact(data){
+      return this.http.post(`${this.baseurl}contact/store`,data)
+    }
+  
+    contactexcelpost(data){
+      
+      return this.http.post(`${this.baseurl}contact/uploadexcel`,data,{headers:{'Accept':'application/json'}})
+    }
+  
+  
+    getupdatecontact(data){
+      return this.http.get(`${this.baseurl}contact/index/${data.id}`)
+    }
+  
+    deletecontact(data)
+    {
+      return this.http.get(`${this.baseurl}contact/destroy/${data}`)
+    }
+  
+    updatecontact(data)
+    {
+      return this.http.post(`${this.baseurl}contact/update`,data)
+    }
+  
+    /* End Fresh contact */
+
 }
