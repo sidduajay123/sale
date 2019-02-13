@@ -245,4 +245,27 @@ export class JarwisService {
   
     /* End Fresh contact */
 
+    /* Template Start */
+
+    intro(data)
+    {
+      return this.http.post(`${this.baseurl}template/intro`,data);
+    }
+
+    getintro()
+    {
+      return this.http.get(`${this.baseurl}template/getintro`);
+    }
+
+    reminder(data)
+    {
+      return this.http.post(`${this.baseurl}template/reminder`,data);
+    }
+    getreminder()
+    {
+      return this.http.get(`${this.baseurl}template/getreminder`);
+    }
+
+    /* End Template Start */
+
 }

@@ -98,6 +98,13 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('fresh', 'SendFreshMailController@fresh');
     Route::get('reminder', 'SendFreshMailController@reminder');
     Route::post('sendnow', 'SendFreshMailController@sendnow');
+    Route::group(['prefix' => 'template'], function () 
+    {
+        Route::post('intro','TemplateController@introduction');
+        Route::get('getintro','TemplateController@getIntro');
+        Route::get('getreminder','TemplateController@getreminder');
+        Route::post('reminder','TemplateController@reminder');
+    });
     
     
 });

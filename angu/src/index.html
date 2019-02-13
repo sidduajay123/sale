@@ -46,24 +46,7 @@
   <!-- jQuery UI 1.11.4 -->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $(document).ready(function () {
-      $('#example').DataTable({});
-      $("#person_number").keypress(function (e) {
-        //if the letter is not digit then display error and don't type anything
-        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-          //display error message
-          $("#errmsg").html("Digits Only").show().fadeOut("slow");
-          return false;
-        }
-      });
-    });
 
-
-    $.widget.bridge('uibutton', $.ui.button);
-   
-    
-  </script>
 
   <!-- Bootstrap 4 -->
   <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -96,6 +79,23 @@
   <script src="/assets/dist/js/demo.js"></script>
   <!-- DataTables -->
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <!-- CK Editor -->
+  <script src="/assets/plugins/ckeditor/ckeditor.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#example').DataTable({});
+      $("#person_number").keypress(function (e) {
+        //if the letter is not digit then display error and don't type anything
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#errmsg").html("Digits Only").show().fadeOut("slow");
+          return false;
+        }
+      });
+    });
+    $.widget.bridge('uibutton', $.ui.button);
+    
+  </script>
 </body>
 
 </html>

@@ -44,6 +44,9 @@ import { AddComponent } from './components/project/contact/add/add.component';
 import { ListComponent } from './components/project/contact/list/list.component';
 import { EditComponent } from './components/project/contact/edit/edit.component';
 import { ComposeMailComponent } from './components/project/mail/compose-mail/compose-mail.component';
+import { IntroductionComponent } from './components/project/template/introduction/introduction.component';
+import { ReminderComponent } from './components/project/template/reminder/reminder.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 library.add(faExternalLinkAlt);
 library.add(faUserCircle);
@@ -79,6 +82,8 @@ library.add(faUserCircle);
     ListComponent,
     EditComponent,
     ComposeMailComponent,
+    IntroductionComponent,
+    ReminderComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,6 +95,7 @@ library.add(faUserCircle);
     ReactiveFormsModule,
     NgbModule,
     FontAwesomeModule,
+    CKEditorModule,
     MsalModule.forRoot({
       clientID: OAuthSettings.appId
     }),

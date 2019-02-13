@@ -26,6 +26,8 @@ import { ListComponent } from './components/project/contact/list/list.component'
 import { AddComponent } from './components/project/contact/add/add.component';
 import { EditComponent } from './components/project/contact/edit/edit.component';
 import { ComposeMailComponent } from './components/project/mail/compose-mail/compose-mail.component';
+import { IntroductionComponent } from './components/project/template/introduction/introduction.component';
+import { ReminderComponent } from './components/project/template/reminder/reminder.component';
 
 const routes: Routes = [
   {
@@ -201,6 +203,20 @@ const routes: Routes = [
   },
 
    /* End Contact Start */
+
+   /* Template start */
+   {
+    path: 'template/intro',
+    component: IntroductionComponent,
+    canActivate: [AfterLoginService]
+  },
+
+   {
+    path: 'template/reminder',
+    component: ReminderComponent,
+    canActivate: [AfterLoginService]
+  },
+   /* End Template start */
 
 ];
 

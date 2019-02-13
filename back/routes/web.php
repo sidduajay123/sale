@@ -25,3 +25,4 @@ Route::get('/authorize', 'AuthController@gettoken');
 Route::get('/signout', 'AuthController@signout');
 Route::get('/mail', 'OutlookController@mail')->name('mail');
 Route::get('/mail/{id}', 'OutlookController@oneMail');
+Route::get('/array','HomeController@array_flatten');

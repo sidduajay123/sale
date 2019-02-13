@@ -15,15 +15,17 @@ class ReminderMailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $lead;
+    public $template;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($request)
+    public function __construct($request,$temp)
     {
         $this->lead = $request;
+        $this->template = $temp;
     }
 
     /**
@@ -33,6 +35,6 @@ class ReminderMailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->lead->person_email)->send(new ReminderMail($this->lead));
+        Mail::to($this->lead->person_email)->send(new ReminderMail($this->lead,$this->template));
     }
 }

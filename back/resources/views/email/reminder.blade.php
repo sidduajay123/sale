@@ -1,12 +1,15 @@
 {{-- @component('mail::message') --}}
-# Introduction
+{{-- # Introduction
 {{$lead->person_name}}
-The body of your message.
+The body of your message. --}}
 
 {{-- @component('mail::button', ['url' => '']) --}}
-Button Text
+{{-- Button Text --}}
 {{-- @endcomponent --}}
 
-Thanks,<br>
-{{ config('app.name') }}
+{{-- Thanks,<br>
+{{ config('app.name') }} --}}
 {{-- @endcomponent --}}
+
+
+{!! $template !!}

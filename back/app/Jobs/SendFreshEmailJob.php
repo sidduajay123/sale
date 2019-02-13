@@ -22,14 +22,16 @@ class SendFreshEmailJob implements ShouldQueue
     // public $timeout = 120;
 
     protected $lead;
+    public $template;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($request)
+    public function __construct($request,$temp)
     {
         $this->lead = $request;
+        $this->template = $temp;
     }
 
     /**
@@ -40,7 +42,7 @@ class SendFreshEmailJob implements ShouldQueue
     public function handle()
     {
         
-        Mail::to($this->lead->person_email)->send(new FreshLeadMail($this->lead));
+        Mail::to($this->lead->person_email)->send(new FreshLeadMail($this->lead,$this->template));
         
                 
     }

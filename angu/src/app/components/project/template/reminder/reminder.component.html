@@ -1,0 +1,5 @@
+<app-left-menu></app-left-menu>
+<div style="left: 135px;position: relative;">
+  <ckeditor [editor]="Editor" (ready)="onReady($event)" [data]='editordata?.success.template' (change)="onChange($event)"></ckeditor>
+  <button (click)='submit()'>Submit</button>
+</div>

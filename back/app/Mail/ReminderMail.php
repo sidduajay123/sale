@@ -12,14 +12,16 @@ class ReminderMail extends Mailable
     use Queueable, SerializesModels;
 
     protected $leaddata;
+    public $template;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($request)
+    public function __construct($request,$temp)
     {
         $this->leaddata = $request;
+        $this->template = $temp;
     }
 
     /**
@@ -29,6 +31,6 @@ class ReminderMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Reminder')->view('email.reminder')->with(['lead'=>$this->leaddata]);
+        return $this->subject('Reminder')->view('email.reminder');
     }
 }
