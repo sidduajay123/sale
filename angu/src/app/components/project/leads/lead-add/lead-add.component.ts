@@ -45,6 +45,7 @@ export class LeadAddComponent implements OnInit {
 
   productlist(data){
     this.products = data.success
+    console.log(this.products)
   }
 
   onSubmit() {
