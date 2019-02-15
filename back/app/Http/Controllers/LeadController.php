@@ -79,7 +79,7 @@ class LeadController extends Controller
                 $record->status = 0;
                 $record->email_sent = 0;
                 $record->email_response = 0;
-                $record->interseted_product = $request->person_product;
+                $record->interseted_product = $request->interseted_product;
                 $record->save();
                 return response()->json(['success' => 'Lead added successfully']);
             } else {
@@ -182,6 +182,7 @@ class LeadController extends Controller
                 'contacted_date' => $request->contacted_date,
                 'person_designation' => $request->person_designation,
                 'contact_source' => $request->contact_source,
+                'interseted_product' => $request->interseted_product,
                 'remark' => $request->remark,
                 'status' => $request->status
             );

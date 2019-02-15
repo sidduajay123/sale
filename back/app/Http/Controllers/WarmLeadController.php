@@ -61,6 +61,7 @@ class WarmLeadController extends Controller
                 'contacted_date' => $request->contacted_date,
                 'person_designation' => $request->person_designation,
                 'contact_source' => $request->contact_source,
+                'interseted_product' => $request->interseted_product,
                 'remark' => $request->remark,
                 'status' => $request->status
             );
