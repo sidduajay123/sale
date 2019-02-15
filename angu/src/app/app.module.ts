@@ -47,6 +47,7 @@ import { ComposeMailComponent } from './components/project/mail/compose-mail/com
 import { IntroductionComponent } from './components/project/template/introduction/introduction.component';
 import { ReminderComponent } from './components/project/template/reminder/reminder.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ResourceComponent } from './components/project/resource/resource.component';
 
 library.add(faExternalLinkAlt);
 library.add(faUserCircle);
@@ -84,6 +85,7 @@ library.add(faUserCircle);
     ComposeMailComponent,
     IntroductionComponent,
     ReminderComponent,
+    ResourceComponent,
   ],
   imports: [
     BrowserModule,

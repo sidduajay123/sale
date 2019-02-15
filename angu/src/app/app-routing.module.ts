@@ -28,6 +28,7 @@ import { EditComponent } from './components/project/contact/edit/edit.component'
 import { ComposeMailComponent } from './components/project/mail/compose-mail/compose-mail.component';
 import { IntroductionComponent } from './components/project/template/introduction/introduction.component';
 import { ReminderComponent } from './components/project/template/reminder/reminder.component';
+import { ResourceComponent } from './components/project/resource/resource.component';
 
 const routes: Routes = [
   {
@@ -71,7 +72,12 @@ const routes: Routes = [
     component: ChangePasswordComponent,
     canActivate: [AfterLoginService]
   },
-
+  
+  {
+    path: 'resource',
+    component: ResourceComponent,
+    canActivate: [AfterLoginService]
+  },
   /* Fresh Lead URL */
 
   {
