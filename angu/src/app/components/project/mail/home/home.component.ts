@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
   authenticated: boolean;
   // The user
   user: any;
-  //  udata: any;
 
   token: any
   datatable: DataTables.Api;
@@ -29,12 +28,10 @@ export class HomeComponent implements OnInit {
   }
 
   userP(data) {
-    // window.location.reload();
     if (data) {
       this.authenticated = true;
       this.authService.getMails().then(
-        (res) => {this.userdata(res)});
-      // console.log(this.user)
+        res => this.userdata(res));
     } else {
       this.authenticated = false;
       this.user = {};
@@ -43,14 +40,12 @@ export class HomeComponent implements OnInit {
 
   userdata(data)
   {
-    // window.location.reload();
     this.user = data
     
   }
   async signIn(): Promise<void> {
     await this.authService.signIn();
     this.user = this.authService.getUser();
-    console.log(this.authService.getUser())
   }
 
 }

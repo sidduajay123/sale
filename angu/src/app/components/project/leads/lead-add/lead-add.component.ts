@@ -45,10 +45,10 @@ export class LeadAddComponent implements OnInit {
 
   productlist(data){
     this.products = data.success
-    console.log(this.products)
   }
 
   onSubmit() {
+    console.log(this.form)
     this.Jarwis.addlead(this.form).subscribe(
       data => this.formsuccess(data)
     );
