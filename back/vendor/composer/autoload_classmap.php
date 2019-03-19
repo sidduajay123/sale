@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Contact' => $baseDir . '/app/Contact.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -25,6 +26,7 @@ return array(
     'App\\Http\\Controllers\\OutlookController' => $baseDir . '/app/Http/Controllers/OutlookController.php',
     'App\\Http\\Controllers\\ProductController' => $baseDir . '/app/Http/Controllers/ProductController.php',
     'App\\Http\\Controllers\\SendFreshMailController' => $baseDir . '/app/Http/Controllers/SendFreshMailController.php',
+    'App\\Http\\Controllers\\TemplateController' => $baseDir . '/app/Http/Controllers/TemplateController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\WarmLeadController' => $baseDir . '/app/Http/Controllers/WarmLeadController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

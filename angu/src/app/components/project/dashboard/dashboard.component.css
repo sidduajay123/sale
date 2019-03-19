@@ -1,0 +1,11 @@
+.col1{background: #002060}
+.col2{background: #1e4e79}
+.col3{background: #2f5496}
+.col4{background: #323f4f}
+.col5{background: #3a3838}
+.col6{background: #262626}
+.inner{color: #fff !important}
+.bg11{padding: 15px; background: #fafafa; margin-top: 45px; border-radius: 07px; border: 01px #afafaf solid; -webkit-box-shadow: 1px 1px 15px 0px rgba(143,143,143,1);
+    -moz-box-shadow: 1px 1px 15px 0px rgba(143,143,143,1);     box-shadow: 1px 1px 15px 0px rgba(143,143,143,1); margin-bottom: 15px !important}
+    .navbar-nav{display: none !important; }
+

@@ -268,4 +268,13 @@ export class JarwisService {
 
     /* End Template Start */
 
+    /* ADmin start */
+
+    getadminUser()
+    {
+      return this.http.get(`${this.baseurl}adminDashboard`);
+    }
+
+    /* Admin End */
+
 }

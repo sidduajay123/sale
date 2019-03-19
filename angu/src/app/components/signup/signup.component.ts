@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  public error = [];
+  public error : any;
   public form = {
     name : null,
     email : null,
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
   handleResponse(data){
     // console.log(data.success.token);
     this.token.handle(data.success.token);
-    this.Router.navigateByUrl('dashboard');
+    this.Router.navigateByUrl('/');
   }
 
   handleError(error){

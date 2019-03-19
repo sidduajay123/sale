@@ -29,14 +29,26 @@ import { ComposeMailComponent } from './components/project/mail/compose-mail/com
 import { IntroductionComponent } from './components/project/template/introduction/introduction.component';
 import { ReminderComponent } from './components/project/template/reminder/reminder.component';
 import { ResourceComponent } from './components/project/resource/resource.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
+  {
+    path: 'admin',
+    component: AdminLoginComponent,
+    canActivate: [BeforeLoginService]
+  },
+  
+  {
+    path: 'admin/dashboard',
+    component: AdminDashboardComponent,
+    canActivate: [BeforeLoginService]
+  },
   {
     path: 'login',
     component: LoginComponent,
     canActivate: [BeforeLoginService]
   },
-
   {
     path: 'signup',
     component: SignupComponent,

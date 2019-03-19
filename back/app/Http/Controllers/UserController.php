@@ -52,8 +52,10 @@ class UserController extends Controller
 
         if ($user->isEmpty()) 
         {
+            
             $input = $request->all();
             $input['password'] = bcrypt($input['password']);
+            $input['role'] = 'user';
             $user = User::create($input);
             return $this->userLogin($request);
         }else 

@@ -582,6 +582,7 @@ class ComposerStaticInit3b824e2de4fa01342981dd9371793a69
     );
 
     public static $classMap = array (
+        'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -601,6 +602,7 @@ class ComposerStaticInit3b824e2de4fa01342981dd9371793a69
         'App\\Http\\Controllers\\OutlookController' => __DIR__ . '/../..' . '/app/Http/Controllers/OutlookController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\SendFreshMailController' => __DIR__ . '/../..' . '/app/Http/Controllers/SendFreshMailController.php',
+        'App\\Http\\Controllers\\TemplateController' => __DIR__ . '/../..' . '/app/Http/Controllers/TemplateController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\WarmLeadController' => __DIR__ . '/../..' . '/app/Http/Controllers/WarmLeadController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

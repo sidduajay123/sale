@@ -22,6 +22,10 @@ Route::get('queuework', function () {
     response()->json(['success'=>'Queue completed successfully']);
 });
 
+Route::post('admin','AdminController@login');
+// Route::get('adminDashboard','AdminController@alluserDetails');
+
+
 Route::post('userLogin', 'UserController@userLogin');
 Route::post('userRegister', 'UserController@userRegister');
 Route::group(['middleware' => 'auth:api'], function(){
@@ -30,6 +34,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('logout', 'UserController@logout');
     Route::post('profile', 'UserController@updateProfile');
     Route::post('changePassword', 'UserController@changePassword');
+    Route::get('adminDashboard','AdminController@alluserDetails');
 
     Route::group(['prefix' => 'product'], function () {
         Route::get('/','ProductController@index');

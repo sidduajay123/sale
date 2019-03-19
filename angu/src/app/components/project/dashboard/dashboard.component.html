@@ -1,3 +1,34 @@
+<div *ngIf="username?.role == 'admin'">
+    <div class="bg11">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm row-border hover" id="gb">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Fresh</th>
+                        <th>Hot</th>
+                        <th>Cold</th>
+                        <th>Dead</th>
+                        <th>Warm</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="admin?.length > 0">
+                    <tr *ngFor="let adminUser of admin">
+                        <td>{{adminUser.name}}</td>
+                        <td>{{adminUser.email}}</td>
+                        <td>{{adminUser.fresh}}</td>
+                        <td>{{adminUser.hot}}</td>
+                        <td>{{adminUser.warm}}</td>
+                        <td>{{adminUser.cold}}</td>
+                        <td>{{adminUser.dead}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -24,7 +55,7 @@
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-primary">
+                    <div class="small-box col1">
                         <div class="inner">
                             <h3>{{allLead?.length}}</h3>
 
@@ -39,7 +70,7 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <div class="small-box col2">
                         <div class="inner">
                             <h3>{{freshlead?.success?.length}}</h3>
 
@@ -54,7 +85,7 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-warning">
+                    <div class="small-box col2">
                         <div class="inner">
                             <h3>{{warmlead?.success?.length}}</h3>
 
@@ -69,7 +100,7 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info">
+                    <div class="small-box col4">
                         <div class="inner">
                             <h3>{{hotlead?.success?.length}}</h3>
 
@@ -83,7 +114,7 @@
                 </div>
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-secondary">
+                    <div class="small-box col5">
                         <div class="inner">
                             <h3>{{coldlead?.success?.length}}</h3>
 
@@ -97,7 +128,7 @@
                 </div>
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-danger">
+                    <div class="small-box col6">
                         <div class="inner">
                             <h3>{{deadlead?.success?.length}}</h3>
 
@@ -128,4 +159,5 @@
     </section>
     <app-left-menu></app-left-menu>
 </div>
+
 <app-footer></app-footer>

@@ -48,6 +48,8 @@ import { IntroductionComponent } from './components/project/template/introductio
 import { ReminderComponent } from './components/project/template/reminder/reminder.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ResourceComponent } from './components/project/resource/resource.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 
 library.add(faExternalLinkAlt);
 library.add(faUserCircle);
@@ -86,6 +88,8 @@ library.add(faUserCircle);
     IntroductionComponent,
     ReminderComponent,
     ResourceComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,

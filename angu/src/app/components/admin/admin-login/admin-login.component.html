@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row login d-flex align-items-center">
+    <div class="container">
+      <form #loginform="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">	
+      <div class="col-xl-4 col-lg-4 col-md-8 col-sm-12">
+        </div>						
+        <div class="col-xl-4 col-lg-4 col-md-8 col-sm-12 mt-5 log adm">
+          <img src="assets/images/quickway_user.png" class="img-fluid d-block m-auto">		
+          <div class="clearfix"></div>
+          <div class="he_ad">
+          <div class="col-xl-12">
+            <div class="borr"><h1 class="text-center">Admin Login</h1></div>
+          <small class="d-block text-center">Access your account</small>
+          <div class="clearfix"></div>
+          <div class="pt-4">
+            <div class="alert alert-danger" [hidden]="!error">
+              {{error}}
+            </div>
+          <div class="form-group">
+          <label>User Email</label>
+          <input type="email" required class="form-control ad" [(ngModel)]="form.email" email="true" name="email" placeholder="Enter Your Email">	
+          </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" required class="form-control pas" [(ngModel)]="form.password" name="password" placeholder="Password Here">	
+          </div>
+            <div class="form-group">
+              <button type="submit" class="btn m-auto d-block admbutton" [disabled]="!loginform.valid" >Log In</button>
+            </div>
+            </div>
+        </div>
+          </div>
+      </div>
+    </div>
+    </form>
+  </div>

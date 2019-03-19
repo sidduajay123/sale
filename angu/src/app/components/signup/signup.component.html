@@ -26,7 +26,7 @@
                       
                     <label>Name</label>
                     <input type="text" required class="form-control ad" [(ngModel)]="form.name" name="name" placeholder="Enter Your Name">
-                    <div class="alert alert-danger" [hidden]="!error.name">
+                    <div class="alert alert-danger" [hidden]="!error?.name">
                         {{error?.name}}
                       </div>
                   </div>
@@ -34,7 +34,7 @@
                       
                     <label>Email</label>
                     <input type="email" required class="form-control ad" [(ngModel)]="form.email" email="true" name="email" placeholder="Enter Your Email">
-                    <div class="alert alert-danger" [hidden]="!error.email">
+                    <div class="alert alert-danger" [hidden]="!error?.email">
                         {{error?.email}}
                       </div>
                   </div>
@@ -42,7 +42,7 @@
                       
                     <label>Password</label>
                     <input type="password" required class="form-control pas" [(ngModel)]="form.password" name="password" placeholder="Password Here">
-                    <div class="alert alert-danger" [hidden]="!error.password">
+                    <div class="alert alert-danger" [hidden]="!error?.password">
                         {{error?.password}}
                       </div>
                   </div>
@@ -50,7 +50,7 @@
                       
                     <label>Confirm Password</label>
                     <input type="password" required class="form-control pas" [(ngModel)]="form.c_password" name="c_password" placeholder="Confirm Password Here">
-                    <div class="alert alert-danger" [hidden]="!error.c_password">
+                    <div class="alert alert-danger" [hidden]="!error?.c_password">
                         {{error?.c_password}}
                       </div>
                   </div>
